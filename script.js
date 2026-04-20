@@ -1,4 +1,3 @@
-window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
 window.harpLibrary = [];
 window.currentOctave = 0;
 window.currentTranspose = 0;
