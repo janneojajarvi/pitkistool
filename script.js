@@ -45,8 +45,10 @@ var urls = [
         { type: "Folkwikisetit", url: "folkwikiSet1.js" },
         { type: "Folkwikisetit", url: "folkwikiSet2.js" },
         { type: "Folkwikisetit", url: "folkwikiSet3.js" },
-	    { type: "Tarkistusnuotit", url: "esavelmat_kansantanssit.js" },
-	{ type: "Tarkistusnuotit", url: "esavelmat_kjs.js" },
+	    { type: "VPS", url: "esavelmat_kansantanssit.js" },
+	{ type: "KJS", url: "esavelmat_kjs.js" },
+	{ type: "Runonlaulumelodiat", url: "esavelmat_rs1.js" },
+	{ type: "Runonlaulumelodiat", url: "esavelmat_rs2.js" },
         { type: "FsFolkdiktningit", url: "fsfolkdiktning02.js" },
         { type: "FsFolkdiktningit", url: "fsfolkdiktning01.js" }
 ];
