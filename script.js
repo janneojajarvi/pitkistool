@@ -46,6 +46,7 @@ var urls = [
         { type: "Folkwikisetit", url: "folkwikiSet2.js" },
         { type: "Folkwikisetit", url: "folkwikiSet3.js" },
 	    { type: "Tarkistusnuotit", url: "esavelmat_kansantanssit.js" },
+	{ type: "Tarkistusnuotit", url: "esavelmat_kjs.js" },
         { type: "FsFolkdiktningit", url: "fsfolkdiktning02.js" },
         { type: "FsFolkdiktningit", url: "fsfolkdiktning01.js" }
 ];
