@@ -45,6 +45,7 @@ var urls = [
         { type: "Sessionsetit", url: "sessionSet17.js" },
         { type: "Sessionsetit", url: "sessionSet18.js" },
         { type: "Tarkistusnuotit", url: "extrasetti5.js" },
+	{ type: "Tarkistusnuotit", url: "esavelmat_hs1.js" },
         { type: "Folkwikisetit", url: "folkwikiSet1.js" },
         { type: "Folkwikisetit", url: "folkwikiSet2.js" },
         { type: "Folkwikisetit", url: "folkwikiSet3.js" },
