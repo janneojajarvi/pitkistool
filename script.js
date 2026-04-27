@@ -23,6 +23,9 @@ async function loadGistData() {
 var urls = [
 	{ type: "Tarkistusnuotit", url: "tarkistusnuotit9.js" },
         { type: "Tarkistusnuotit", url: "korjaustsekki3.js" },
+	{ type: "Tarkistusnuotit", url: "richardrobinsonbook.js" },
+	{ type: "Tarkistusnuotit", url: "FinnishTunes.js" },
+	{ type: "Tarkistusnuotit", url: "sekalaista01.js" },
         { type: "Sessionsetit", url: "sessionSet01.js" },
         { type: "Sessionsetit", url: "sessionSet02.js" },
         { type: "Sessionsetit", url: "sessionSet03.js" },
