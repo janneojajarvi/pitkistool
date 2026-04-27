@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pitkistool-v5';
+const CACHE_NAME = 'pitkistool-v6';
 const ASSETS = [
   './',
   './index.html',
