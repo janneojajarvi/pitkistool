@@ -4,6 +4,10 @@ var sekalaista01 = [
     "abc": "X:101\nT:A new Strathspey Reel\nB:CPC v3, p23\nN:David Greenberg says this is impossible on the fiddle - must be for flute\nN:final beats of each part fixed to match the anacruses\nM:C\nL:1/8\nQ:1/4=92 \nK:E Minor\ng |  B<B TB>A     G<g  B>g|  a>AB>G  E<e   e>f|g>ab<a  (g<e)g>e   |d>A B>G E<e [1e  :|[2e3/||\nf/|  g>ab>a       g<b  b>g|  a>gb>g Ta>g   e2 |d>bg>b   e<g    B2 |d>A B>G E<e [1e3/:|[2e  ||\ng |(TB>G)(TA>G) (TB>G) A<g|(TB>G)A>B E<e   e>f|g>bTa>g Te>d    B<g|d>A B>G E<e [1e  :|[2e3/||\nf/|  g>G b>G      a>G  b>G|  a>Gb>g (Ta>g) e2 |d>bb>a  (g/e/d) B2 |d>A B>G E<e [1e3/:|[2e  |]"
   },
   {
+    "name": "Klezmeron",
+    "abc": "X:1\nT:Klezmeron\nC:Sekalaista01\nL:1/16\nM:4/4\nK:D minor\nA,2 D2F2|:A6 A4 BA G2F2|A2 A6 z2 A,2 D2F2|A6 A4 BA G2F2|A8 z2 A2 d2e2| f8 z2 d2 B2G2 | B8 z2 E2 F2G2|\nABA2 GAG2 FGF2 EFG2| A8 z2 A2 d2e2|f8 z2 d2 B2G2| B8 z2 E2 F2G2|ABA2 GAG2 FGF2 EFE2|1 D8 z2 A,2 D2F2:|2 z8 z2 A,2B,2A,2|\nL:1/8\n|:A,2 B,2 ^C2 D2| E E3 z A,^CE|G G2 _A =A>G FG|A>B A>B A A, B,A,|\nA,2 B,2 ^C2 D2| E E3 z A,^CE|G G2 _A =A>G FE|1 D4 z A, B,A,:|2 D8|\nc2 A>B c4| B2 A>G FA C2|c2 A>B c4|B2 A>G F4|\nc2 A>B c3 c|f/2e/2d c/2B/2A AB =Bc|c2 A>B c4|B2 A>G F4|\nB3 B2 E FG| A4 z D EF|A2G2F2G2|\nL:1/16\nA8 z2 A2 d2e2|f8 z2 d2 B2G2 | B8 z2 E2 F2G2|ABA2 GAG2 FGF2 EFE2| D8 z2 A,2 D2F2|"
+  },
+  {
     "name": "A new Strathspey Reel",
     "abc": "X:102\nT:A new Strathspey Reel\nB:CPC v3, p23\nM:C\nL:1/8\nQ:1/4=92 \nK:A Minor\nG<G    G>A  c<A    A2  | c2    g>c a>ce<g  |E>Gc>G     A<a    a2   |g>de>c  a>GA<c:|\nf>ga>g      g<e    e2  |(e<d)d>e   g>ce<g  |E>Gc>G     A<aa>g      |c'>ga>e g>GA<c:|\nGG/G/ (G>A) cA/A/ (A>c)| cc/c/ g>c a>c(e<g)|EE/E/  G>g FF/F/ (a>c')|g>de>c  a>GA<c:|\nff/f/ (a>g) ge/e/ (e>d)| dc/c/ g>c a>ce<g  |E>Gc>G     A>a    a2   |g>de>c  a>GA<c:|"
   },
