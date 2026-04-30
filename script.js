@@ -55,6 +55,7 @@ var urls = [
 	{ type: "Sekalaiset", url: "norway1.js" },
 	{ type: "Sekalaiset", url: "norway1.js" },
 	{ type: "Sekalaiset", url: "richardrobinsonbook.js" },
+	{ type: "Folkwikisetit", url: "folkwikiExtra.js" },
         { type: "Folkwikisetit", url: "folkwikiSet1.js" },
         { type: "Folkwikisetit", url: "folkwikiSet2.js" },
         { type: "Folkwikisetit", url: "folkwikiSet3.js" },
