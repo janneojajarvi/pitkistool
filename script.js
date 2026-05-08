@@ -110,6 +110,35 @@ var resultsDiv = document.getElementById('searchResults');
 var baseNoteSelect = document.getElementById('baseNote');
 
 // APUFUNKTIOT
+
+
+	function isNoteRangeOk(abc, trans, oct, maxNoteLimit) {
+    var noteRegex = /([\^_=]?)([A-Ga-g])([,']*)([0-9\/]*)/g;
+    var match;
+    var highestFound = -999;
+    var baseShift = 2; // D-huilun korjaus
+
+    while ((match = noteRegex.exec(abc)) !== null) {
+        var noteName = match[2];
+        var acc = match[1];
+        var octs = match[3];
+        
+        var v = getPitchValue(noteName);
+        if (acc === '^') v++;
+        if (acc === '_') v--;
+        for (var j = 0; j < octs.length; j++) {
+            if (octs[j] === ',') v -= 12;
+            if (octs[j] === "'") v += 12;
+        }
+
+        // Lasketaan nuotin lopullinen korkeus samalla kaavalla kuin renderöinnissä
+        var step = v + (oct * 12) + trans - baseShift;
+        if (step > highestFound) highestFound = step;
+    }
+    
+    return highestFound <= maxNoteLimit;
+}
+	
 function getPitchValue(noteName) {  
     var baseMap = { 'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11 };  
     var val = baseMap[noteName.toUpperCase()] || 0;  
@@ -1142,11 +1171,16 @@ function searchWithSliderLimit() {
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
     var resultsDiv = document.getElementById('searchResults');
     var slider = document.getElementById('errorRateSlider');
+	
+	 // UUSI: Luetaan korkein sallittu sävel sliderista (esim. maxNoteSlider)
+    // Jos säädintä ei löydy, käytetään oletuksena arvoa 22 (c3)
+    var maxNoteSlider = document.getElementById('maxNoteSlider');
+    var currentMaxNote = maxNoteSlider ? parseInt(maxNoteSlider.value) : 22;
     
     // Luetaan sallittu virheprosentti (esim. 10% = 0.1)
     var allowedErrorThreshold = slider ? (parseFloat(slider.value) / 100) : 0.1;
 
-    resultsDiv.innerHTML = "Etsitään (max " + (allowedErrorThreshold * 100).toFixed(0) + "% virheitä)...";
+    resultsDiv.innerHTML = "Etsitään (max " + (allowedErrorThreshold * 100).toFixed(0) + "% virheitä & max sävel " + currentMaxNote + ")...";
     resultsDiv.style.display = "block";
 
     // Pieni viive, jotta selain ehtii piirtää "Etsitään..." -tekstin ruudulle ennen raskasta laskentaa
@@ -1191,8 +1225,10 @@ function searchWithSliderLimit() {
                     [-1, 0, 1].forEach(function(oct) {
                         var rate = countErrorRate(abc, trans, oct);
                         if (rate < bestScore.rate) {
+							if (isNoteRangeOk(abc, trans, oct, currentMaxNote)) {
                             bestScore = { rate: rate, oct: oct, trans: trans };
-                        }
+                        	}
+						}
                     });
                 });
             });
