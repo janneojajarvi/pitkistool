@@ -1,4 +1,4 @@
-var esavelmat_kjs = [
+var esavelmat_rs2 = [
   {
     name: "rs2_0001",
     abc: "X:1\nT:rs2_0001\nO:Vuonninen, Vienan Karjala\nS:A. Lähteenkorva\nM:nan\nL:1/16\nR:Nuotti-kirja\nB:eSävelmät rs2_0001\nK:G\n|: DDG4 EDF4 | GED4 D4 ED | GEF4 D4 {E}F4 | D4:|"
