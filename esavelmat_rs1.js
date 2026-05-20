@@ -1,4 +1,4 @@
-var esavelmat_kjs = [
+var esavelmat_rs1 = [
   {
     name: "rs1_0001",
     abc: "X:1\nT:rs1_0001\nO:Soikkola, Inkeri\nS:A. Launis\nM:(9/8, 15/8\nL:1/16\nR:Nuotti-kirja\nB:eSävelmät rs1_0001\nK:e\n|: E2G2 E2F2 E2E2 D6 | E2G2 E2F2 E2E2 D6 | D2D2 D2D6:|"
