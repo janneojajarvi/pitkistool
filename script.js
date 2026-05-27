@@ -410,29 +410,24 @@ visualObj = ABCJS.renderAbc("paper", finalAbc, {
 
 if (synthControl && visualObj) {  
     
-    // Määritetään asetukset ja pakotetaan soitin etsimään dwilloflute-soundfonttia
-    var audioParams = { 
-        midiTranspose: window.currentTranspose,
-        program: 73,                        // 73 = MIDI-huilu. Pakottaa abcjs:n etsimään tiedostoa "flute-mp3.js"
-        soundFontUrl: "soundfonts/",        // Juurikansio soundfonteille projektissasi
-        soundFontInstrument: "dwilloflute", // Alikansion nimi soundfonts-kansion sisällä
-        soundFontVolumeMultiplier: 1.5      // Äänenvoimakkuuden korjaus (säädä tarvittaessa välillä 1.0 - 2.0)
-    };
+    // Haetaan asetukset valikon mukaan (huilulle polut, pianolle tyhjä eli alkuperäinen)
+    var audioParams = window.getAudioOptions();
 
-    // Ladataan soittimen moottori uusilla soundfont-asetuksilla
+    // Ladataan soittimen moottori asetuksilla
     synth.init({  
         audioContext: new (window.AudioContext || window.webkitAudioContext)(),  
         visualObj: visualObj,
         options: audioParams 
-    }).then(function() {
+    }).then(function() {  
         
-        // 3. Asetetaan transponointi myös visuaaliselle soittimen ohjaimelle
+        // Asetetaan transponointi myös visuaaliselle soittimen ohjaimelle
         synthControl.setTune(visualObj, true, audioParams).then(function() {
             synthControl.restart(); 
         });  
         
+    }).catch(function(err) {
+        console.warn("Soittimen alustus odottaa klikkausta:", err);
     });
-
 }
 
 
@@ -2070,17 +2065,76 @@ function setupFocusLayout(enable) {
 }
 
 
+// Globaali funktio soitinasetusten hakemiseen
+window.getAudioOptions = function() {
+    var instrumentSelect = document.getElementById('instrumentSelect');
+    var selectedInstrument = instrumentSelect ? instrumentSelect.value : 'flute';
+
+    if (selectedInstrument === 'flute') {
+        // Sinun Pro Tools -huilusi (paikalliset MP3-tiedostot)
+        return {
+            midiTranspose: window.currentTranspose || 0,
+            program: 73,                        // Hakee kansiota flute-mp3
+            soundFontUrl: "soundfonts/"         // Polku paikalliseen kansioon
+        };
+    } else {
+        // ALKUPERÄINEN ABCJS-SOITIN
+        // Jätetään kaikki soundfont-polut pois, jolloin abcjs käyttää omaa sisäistä soitintaan!
+        return {
+            midiTranspose: window.currentTranspose || 0
+        };
+    }
+};
+
+// Luodaan soitinohjain
 synthControl = new ABCJS.synth.SynthController();
 
-synthControl.load("#audio", null, {
-displayLoop: true,
-displayRestart: true,
-displayPlay: true,
-displayProgress: true,
-displayWarp: false
-});
+function initAudioController() {
+    var currentOptions = window.getAudioOptions();
+    
+    synthControl.load("#audio", null, {
+        displayLoop: true,
+        displayRestart: true,
+        displayPlay: true,
+        displayProgress: true,
+        displayWarp: false,
+        options: currentOptions
+    });
+}
+
+// Ensimmäinen käynnistys
+initAudioController();
 synth = new ABCJS.synth.CreateSynth();
 processAbc();
+
+// Funktio, joka asettaa kuuntelijan valikolle
+function lisaaSoitinKuuntelija() {
+    var instrumentSelect = document.getElementById('instrumentSelect');
+    if (instrumentSelect) {
+        // Poistetaan vanha kuuntelija varmuuden vuoksi, ettei tule tuplia
+        instrumentSelect.removeEventListener('change', vaihdaSoitinLennosta);
+        instrumentSelect.addEventListener('change', vaihdaSoitinLennosta);
+        console.log("✅ Soitinvalikon kuuntelija aktivoitu onnistuneesti!");
+    } else {
+        console.warn("⚠️ Valikkoa 'instrumentSelect' ei vielä löytynyt sivulta.");
+    }
+}
+
+function vaihdaSoitinLennosta() {
+    console.log("🔄 Soitin vaihdettu valikosta: " + this.value);
+    if (synth) {
+        synth.stop();
+    }
+    initAudioController();
+    processAbc();
+}
+
+// Yritetään heti
+lisaaSoitinKuuntelija();
+
+// Yritetään vielä uudestaan, kun sivu on varmasti ladannut kaiken
+document.addEventListener('DOMContentLoaded', lisaaSoitinKuuntelija);
+window.addEventListener('load', lisaaSoitinKuuntelija);
 
 // Info-ikkunan hallinta
 var modal = document.getElementById("infoModal");
@@ -2111,3 +2165,12 @@ if ('serviceWorker' in navigator) {
 }
 
 };
+
+// Herätetään äänimoottori heti, kun käyttäjä klikkaa sivua missä tahansa
+document.addEventListener('click', function() {
+    if (synth && synth.audioContext && synth.audioContext.state === 'suspended') {
+        synth.audioContext.resume().then(function() {
+            console.log("🔊 Selainlukitus avattu! Äänimoottori aktivoitu klikkauksella.");
+        });
+    }
+}, { once: true });
