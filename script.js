@@ -410,19 +410,21 @@ visualObj = ABCJS.renderAbc("paper", finalAbc, {
 
 if (synthControl && visualObj) {  
     
-    // 1. Määritetään soittimen asetukset ja kerrotaan sille transponoinnin määrä
-    // HUOM: Koska olet lisännyt K:-riville "octave="-parametrin, abcjs hoitaa oktaavin 
-    // todennäköisesti jo automaattisesti. Siksi annamme soittimelle vain puoliaskeleet!
+    // Määritetään asetukset ja pakotetaan soitin etsimään dwilloflute-soundfonttia
     var audioParams = { 
-        midiTranspose: window.currentTranspose 
+        midiTranspose: window.currentTranspose,
+        program: 73,                        // 73 = MIDI-huilu. Pakottaa abcjs:n etsimään tiedostoa "flute-mp3.js"
+        soundFontUrl: "soundfonts/",        // Juurikansio soundfonteille projektissasi
+        soundFontInstrument: "dwilloflute", // Alikansion nimi soundfonts-kansion sisällä
+        soundFontVolumeMultiplier: 1.5      // Äänenvoimakkuuden korjaus (säädä tarvittaessa välillä 1.0 - 2.0)
     };
 
-    // 2. Ladataan soittimen moottori uusilla asetuksilla
+    // Ladataan soittimen moottori uusilla soundfont-asetuksilla
     synth.init({  
         audioContext: new (window.AudioContext || window.webkitAudioContext)(),  
         visualObj: visualObj,
-        options: audioParams // <-- Asetetaan transponointi moottorille
-    }).then(function() {  
+        options: audioParams 
+    }).then(function() {
         
         // 3. Asetetaan transponointi myös visuaaliselle soittimen ohjaimelle
         synthControl.setTune(visualObj, true, audioParams).then(function() {
