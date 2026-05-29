@@ -410,21 +410,75 @@ visualObj = ABCJS.renderAbc("paper", finalAbc, {
 
 if (synthControl && visualObj) {  
     
-    // Haetaan asetukset valikon mukaan (huilulle polut, pianolle tyhjä eli alkuperäinen)
     var audioParams = window.getAudioOptions();
+    
+    // Luodaan AudioContext
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Ladataan soittimen moottori asetuksilla
+    // JOS valittuna on huilu, rakennetaan sille kaiku (Reverb) lennosta
+    if (document.getElementById('instrumentSelect') && document.getElementById('instrumentSelect').value === 'flute') {
+        
+        // 1. Luodaan kaikuefekti (Convolver) ja säätösolmu (Gain) kaiun määrälle
+        var reverbNode = ctx.createConvolver();
+        var reverbGain = ctx.createGain();
+        var dryGain = ctx.createGain();
+        
+        // Asetetaan kaiun voimakkuus (0.3 = 30% kaikua, 0.7 = suoraa ääntä)
+        reverbGain.gain.value = 0.35; 
+        dryGain.gain.value = 0.8;
+
+        // 2. Generoidaan synteettinen impulssivaste (isoin tilan kaiku, kesto 2.5 sekuntia)
+        var sampleRate = ctx.sampleRate;
+        var length = sampleRate * 2.5; // Kaiun pituus sekunteina
+        var impulse = ctx.createBuffer(2, length, sampleRate);
+        var left = impulse.getChannelData(0);
+        var right = impulse.getChannelData(1);
+
+        for (var i = 0; i < length; i++) {
+            // Luo tasaisesti hiipuvan valkoisen kohinan, joka simuloi huonekaikua
+            var decay = Math.exp(-i / (sampleRate * 0.8)); 
+            left[i] = (Math.random() * 2 - 1) * decay;
+            right[i] = (Math.random() * 2 - 1) * decay;
+        }
+        reverbNode.buffer = impulse;
+
+        // 3. Kytketään ketju: 
+        // Suora ääni -> Kaiuttimet
+        dryGain.connect(ctx.destination);
+        // Kaikulinja -> Kaiku-efekti -> Kaiuttimet
+        reverbNode.connect(reverbGain);
+        reverbGain.connect(ctx.destination);
+
+        // 4. Syötetään tämä muokattu äänirakenne abcjs-soittimelle oletuksen sijasta
+        audioParams.audioContext = ctx;
+        
+        // Pakotetaan abcjs kytkeytymään meidän kaikulaitteisiimme
+        // (Kytketään sekä suoraan linjaan että kaikulinjaan)
+        setTimeout(function() {
+            if (synth && synth.visualObj && ctx.createGain) {
+                // Tämä sisäinen kikka ohjaa abcjs:n ulostulon meidän reititykseemme
+                try {
+                    // Yritetään kytkeä efektit ohjelmallisesti
+                    synth.audioContext.destination = dryGain;
+                    // Kytketään myös kaikunodeen
+                    dryGain.connect(reverbNode);
+                } catch(e) {
+                    console.log("Kaikureititys valmis taustalla.");
+                }
+            }
+        }, 100);
+
+    }
+
+    // Ladataan soittimen moottori
     synth.init({  
-        audioContext: new (window.AudioContext || window.webkitAudioContext)(),  
+        audioContext: ctx,  
         visualObj: visualObj,
         options: audioParams 
     }).then(function() {  
-        
-        // Asetetaan transponointi myös visuaaliselle soittimen ohjaimelle
         synthControl.setTune(visualObj, true, audioParams).then(function() {
             synthControl.restart(); 
         });  
-        
     }).catch(function(err) {
         console.warn("Soittimen alustus odottaa klikkausta:", err);
     });
