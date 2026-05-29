@@ -424,7 +424,7 @@ if (synthControl && visualObj) {
         var dryGain = ctx.createGain();
         
         // Asetetaan kaiun voimakkuus (0.3 = 30% kaikua, 0.7 = suoraa ääntä)
-        reverbGain.gain.value = 0.35; 
+        reverbGain.gain.value = 0.6; 
         dryGain.gain.value = 0.8;
 
         // 2. Generoidaan synteettinen impulssivaste (isoin tilan kaiku, kesto 2.5 sekuntia)
