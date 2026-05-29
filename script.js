@@ -1468,19 +1468,30 @@ function isNoteRangeOk(abc, trans, oct, maxNoteLimit) {
     return true; // Jos looppi pääsi loppuun, yksikään nuotti ei ollut liian korkea
 }
 
-	// Apufunktio soivien nuottien laskemiseen (taukoja z tai x ei lasketa)
-// Apufunktio soivien nuottien laskemiseen (metatiedot ja tauot z/x ohitetaan)
+
+// Apufunktio soivien nuottien laskemiseen (metatiedot, tekstit ja tanssiaskeleet ohitetaan)
 function hasEnoughPlayableNotes(abc) {
     if (!abc) return false;
     
-    // 1. Poistetaan hakasulkeet ja niiden sisältö (esim. [M:3/4], [K:Gdor], [V:1])
-    // jotta niiden sisällä olevat kirjaimet (A-G) eivät sotke laskentaa
-    var cleanedAbc = abc.replace(/\[[^\]]*\]/g, '');
+    // 1. Jaetaan teksti riveihin ja otetaan mukaan VAIN ne rivit, joilla on tahtiviiva '|'
+    // Tämä pudottaa pois otsikot (T:), sävellajit (K:), tahtilajit (M:) ja pelkät tekstirivit
+    var lines = abc.split('\n');
+    var musicContent = "";
     
-    // 2. Etsitään vain varsinaiset nuotit A-G ja a-g cleanedAbc-merkkijonosta
-    var notes = cleanedAbc.match(/[A-Ga-g]/g) || [];
+    for (var i = 0; i/ < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line.includes('|')) {
+            musicContent += " " + line;
+        }
+    }
     
-    // Palautetaan true vain, jos aitoja nuotteja on vähintään 4
+    // 2. Poistetaan hakasulkeet ja niiden sisältö (esim. [V:1] tai [r:ohje]) varmuuden vuoksi
+    musicContent = musicContent.replace(/\[[^\]]*\]/g, '');
+    
+    // 3. Etsitään vain varsinaiset nuotit A-G ja a-g tästä puhdistetusta musiikkisisällöstä
+    var notes = musicContent.match(/[A-Ga-g]/g) || [];
+    
+    // Palautetaan true vain, jos aitoja nuotteja tahtien sisällä on vähintään 4
     return notes.length >= 4;
 }
 
