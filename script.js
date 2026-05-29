@@ -1470,9 +1470,18 @@ function isNoteRangeOk(abc, trans, oct, maxNoteLimit) {
 }
 
 	// Apufunktio soivien nuottien laskemiseen (taukoja z tai x ei lasketa)
+// Apufunktio soivien nuottien laskemiseen (metatiedot ja tauot z/x ohitetaan)
 function hasEnoughPlayableNotes(abc) {
-    // Etsitään vain kirjaimia A-G ja a-g (ABC-notaation nuotit)
-    var notes = abc.match(/[A-Ga-g]/g) || [];
+    if (!abc) return false;
+    
+    // 1. Poistetaan hakasulkeet ja niiden sisältö (esim. [M:3/4], [K:Gdor], [V:1])
+    // jotta niiden sisällä olevat kirjaimet (A-G) eivät sotke laskentaa
+    var cleanedAbc = abc.replace(/\[[^\]]*\]/g, '');
+    
+    // 2. Etsitään vain varsinaiset nuotit A-G ja a-g cleanedAbc-merkkijonosta
+    var notes = cleanedAbc.match(/[A-Ga-g]/g) || [];
+    
+    // Palautetaan true vain, jos aitoja nuotteja on vähintään 4
     return notes.length >= 4;
 }
 
