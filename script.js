@@ -422,7 +422,7 @@ var ctx = new (window.AudioContext || window.webkitAudioContext)();
         var reverbGain = ctx.createGain();
         
         // SÄÄDÄ KAIKUA TÄSTÄ: 0.6 = 60% kaiku. Nosta tai laske makusi mukaan!
-        reverbGain.gain.value = 0.8; 
+        reverbGain.gain.value = 0.6; 
         
         // Generoidaan kaunis digitaalinen huonekaiku
         var rate = ctx.sampleRate;
