@@ -1470,6 +1470,7 @@ function isNoteRangeOk(abc, trans, oct, maxNoteLimit) {
 
 
 // Apufunktio soivien nuottien laskemiseen (metatiedot, tekstit ja tanssiaskeleet ohitetaan)
+// Apufunktio soivien nuottien laskemiseen (metatiedot, tekstit ja tanssiaskeleet ohitetaan)
 function hasEnoughPlayableNotes(abc) {
     if (!abc) return false;
     
