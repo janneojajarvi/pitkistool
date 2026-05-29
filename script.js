@@ -14,7 +14,7 @@ var allowedD = [...new Set(
 var lastOriginalAbc = "";
 var visualObj = null;
 var synthControl = null;
-var synth = null;
+var synth = null;      
 // D-pitkähuilun sallitut nuottiarvot (yläsävelsarja d1-d3)  
 // var allowedD = [0, 4, 6, 7, 9, 10, 11, 12, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 33, 34, 35, 36];  
 
@@ -1469,6 +1469,13 @@ function isNoteRangeOk(abc, trans, oct, maxNoteLimit) {
     return true; // Jos looppi pääsi loppuun, yksikään nuotti ei ollut liian korkea
 }
 
+	// Apufunktio soivien nuottien laskemiseen (taukoja z tai x ei lasketa)
+function hasEnoughPlayableNotes(abc) {
+    // Etsitään vain kirjaimia A-G ja a-g (ABC-notaation nuotit)
+    var notes = abc.match(/[A-Ga-g]/g) || [];
+    return notes.length >= 4;
+}
+
 // --- MUUTETTU randomStrictSearch (Arvonta2) suodattimilla ---
 function randomStrictSearch() {
     var library = getFilteredLibrary(); // Korvattu [...window.harpLibrary]
@@ -1491,7 +1498,12 @@ function randomStrictSearch() {
     for (var i = 0; i < libraryCopy.length; i++) {
         var item = libraryCopy[i];
         var abc = item.abc || item.notation || item.content || "";
-        
+
+	// UUSI SUODATIN: Pitää olla vähintään 4 soivaa nuottia (tauot ei riitä)
+        if (!hasEnoughPlayableNotes(abc)) {
+            continue;
+        }
+		
         // --- SUODATIN 1: Pituus (vähintään 5 tahtia) ---
         // Lasketaan pystyviivat | ABC-koodista
         var barCount = (abc.match(/\|/g) || []).length;
@@ -1597,6 +1609,12 @@ async function randomStrictSearchLimited() {
     for (var i = 0; i < maxAttempts; i++) {
         var item = pool[i];
         var abc = item.abc || item.notation || item.content || "";
+
+	// UUSI SUODATIN: Pitää olla vähintään 4 soivaa nuottia (tauot ei riitä)
+        if (!hasEnoughPlayableNotes(abc)) {
+            continue;
+        }
+		
         if ((abc.match(/\|/g) || []).length <= 5) continue;
 
         var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
@@ -1659,6 +1677,11 @@ async function randomStrictSearchLimited() {
     for (var i = 0; i < maxAttempts; i++) {
         var item = library[i];
         var abc = item.abc || item.notation || item.content || "";
+
+		// UUSI SUODATIN: Pitää olla vähintään 4 soivaa nuottia (tauot ei riitä)
+        if (!hasEnoughPlayableNotes(abc)) {
+            continue;
+        }
         
         if ((abc.match(/\|/g) || []).length <= 5) continue; 
 
