@@ -2077,7 +2077,7 @@ window.getAudioOptions = function() {
             program: 73,                        // Hakee kansiota flute-mp3
             soundFontUrl: "soundfonts/",        // Polku paikalliseen kansioon
             warpToMidi: true,
-            reverb: 0.4                         // 0.4 = 40% kaikua huilulle!
+            reverb: 0.8                         // 0.4 = 40% kaikua huilulle!
         };
     } else {
         // ALKUPERÄINEN ABCJS-SOITIN
