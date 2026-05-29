@@ -412,10 +412,47 @@ if (synthControl && visualObj) {
     
     // Haetaan asetukset valikon mukaan (huilulle polut ja kaiku, pianolle tyhjä eli alkuperäinen)
     var audioParams = window.getAudioOptions();
+var ctx = new (window.AudioContext || window.webkitAudioContext)();
+	// JOS valittuna on huilu (program 73), rakennetaan kaiku ja "huijataan" abcjs:ää
+    if (audioParams.program === 73) {
+        var realDestination = ctx.destination;
+        var masterBus = ctx.createGain(); // Tämä toimii meidän "valekaiuttimena"
+        
+        var convolver = ctx.createConvolver();
+        var reverbGain = ctx.createGain();
+        
+        // SÄÄDÄ KAIKUA TÄSTÄ: 0.6 = 60% kaiku. Nosta tai laske makusi mukaan!
+        reverbGain.gain.value = 0.6; 
+        
+        // Generoidaan kaunis digitaalinen huonekaiku
+        var rate = ctx.sampleRate;
+        var length = rate * 2.5; // Kaiun pituus 2.5 sekuntia
+        var impulse = ctx.createBuffer(2, length, rate);
+        var left = impulse.getChannelData(0);
+        var right = impulse.getChannelData(1);
+        for (var i = 0; i < length; i++) {
+            var decay = Math.exp(-i / (rate * 0.8)); 
+            left[i] = (Math.random() * 2 - 1) * decay;
+            right[i] = (Math.random() * 2 - 1) * decay;
+        }
+        convolver.buffer = impulse;
 
+        // Kytkennät: MasterBus jakaantuu suoraan ääneen ja kaikuun
+        masterBus.connect(realDestination);      // Suora ääni (Dry)
+        masterBus.connect(convolver);            // Signaali kaikulaitteeseen
+        convolver.connect(reverbGain);           // Kaikulaitteesta äänenvoimakkuuden säätöön
+        reverbGain.connect(realDestination);     // Kaiku ulos oikeista kaiuttimista (Wet)
+
+        // HUIJAUS: Korvataan AudioContextin alkuperäinen ulostulo meidän mikserillämme!
+        Object.defineProperty(ctx, 'destination', {
+            value: masterBus,
+            writable: false
+        });
+    }
+	
     // Ladataan soittimen moottori asetuksilla
     synth.init({  
-        audioContext: new (window.AudioContext || window.webkitAudioContext)(),  
+        audioContext: ctx,  
         visualObj: visualObj,
         options: audioParams 
     }).then(function() {  
