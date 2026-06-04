@@ -1191,7 +1191,7 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 function smartSearch(isRandom) {
 	// --- UUSI SESSION-REITITYS ---
-    var sourceSelect = document.getElementById('gistSelect');
+    var sourceSelect = document.getElementById('sourceFilter'); // <-- TÄMÄ KORJATTU
     var selectedSource = sourceSelect ? sourceSelect.value : '';
     // Käytetään oikeaa id:tä 'searchInput' 
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
