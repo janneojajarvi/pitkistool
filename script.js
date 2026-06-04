@@ -1190,23 +1190,24 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 
 function smartSearch(isRandom) {
-	// --- UUSI SESSION-REITITYS ---
-    var sourceSelect = document.getElementById('sourceFilter'); // <-- TÄMÄ KORJATTU
+	 // --- REITITYS TOISEN TYÖKALUN THE SESSION -HAULLE ---
+    var sourceSelect = document.getElementById('sourceFilter');
     var selectedSource = sourceSelect ? sourceSelect.value : '';
-    // Käytetään oikeaa id:tä 'searchInput' 
-    var query = document.getElementById('searchInput').value.toLowerCase().trim();
-    var resultsDiv = document.getElementById('searchResults');
+    var query = document.getElementById('searchInput').value.trim();
 
     if (!isRandom && selectedSource === 'thesession') {
         if (query !== "") {
-            searchFromTheSession(query);
+            haeTheSession(query); // Kutsuu toisen työkalusi mukaista hakufunktiota
         } else {
-             resultsDiv.innerHTML = "Kirjoita hakusana etsiäksesi The Sessionista.";
-             resultsDiv.style.display = "block";
+            var resultsDiv = document.getElementById('searchResults');
+            if (resultsDiv) {
+                resultsDiv.innerHTML = "Kirjoita hakusana etsiäksesi The Sessionista.";
+                resultsDiv.style.display = "block";
+            }
         }
-        return; // Keskeytetään normaali haku lennosta
+        return; // Keskeytetään normaali paikallinen haku lennosta
     }
-    // ----------------------------
+    // --------------------------
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
     resultsDiv.innerHTML = "Analysoidaan...";
     resultsDiv.style.display = "block";
