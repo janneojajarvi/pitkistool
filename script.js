@@ -611,6 +611,102 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
     randomStrictSearchLimited();
 };
 
+// UUSI FUNKTIO: Hakee kappaleita lennosta The Sessionista ja suodattaa ne pitkähuilulle
+async function searchFromTheSession(query) {
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = "Haetaan ja suodatetaan The Session -tietokannasta...";
+    resultsDiv.style.display = "block";
+
+    try {
+        // 1. Haetaan kappaleet nimen/hakusanan perusteella (hakee max 50 tulosta kerralla)
+        var searchUrl = `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&perpage=50`;
+        var response = await fetch(searchUrl);
+        var searchData = await response.json();
+
+        if (!searchData.tunes || searchData.tunes.length === 0) {
+            resultsDiv.innerHTML = "The Sessionista ei löytynyt yhtään kappaletta hakusanalla: " + query;
+            return;
+        }
+
+        var filteredMatches = [];
+        resultsDiv.innerHTML = `Löytyi ${searchData.tunes.length} kandidaattia. Analysoidaan pitkähuilukelpoisuutta...`;
+
+        // 2. Käydään löydetyt kappaleet läpi ja haetaan niiden tarkemmat ABC-tiedot
+        for (var i = 0; i < searchData.tunes.length; i++) {
+            var tune = searchData.tunes[i];
+            
+            // Haetaan yksittäisen kappaleen kaikki versiot (settings)
+            var tuneUrl = `https://thesession.org/tunes/${tune.id}?format=json`;
+            var tuneResponse = await fetch(tuneUrl);
+            var tuneData = await tuneResponse.json();
+
+            if (tuneData.settings) {
+                // Kappaleesta voi olla useita eri soittajien lisäämiä versioita, testataan ne kaikki!
+                for (var s = 0; s < tuneData.settings.length; s++) {
+                    var setting = tuneData.settings[s];
+                    
+                    // Rakennetaan täysiverinen ABC-koodi Sessionin palauttamista paloista
+                    var fullAbc = `X: ${tune.id}\nT: ${tune.name} (Versio ${s + 1})\nM: ${setting.meter}\nL: 1/8\nK: ${setting.key}\n${setting.abc}`;
+
+                    // LASKETAAN VIRHEPROSENTTI: Käytetään sinun työkalusi valmista countErrorRate-funktiota!
+                    // Koska lennosta haussa transponointia ei vielä tiedetä, testataan oletuksena (trans=0, oct=0)
+                    // Voit myös testata sopivuutta hasEnoughPlayableNotes-funktiolla
+                    if (typeof hasEnoughPlayableNotes === "function" && !hasEnoughPlayableNotes(fullAbc)) {
+                        continue; // Ohitetaan jos ei ole aito nuotti
+                    }
+
+                    var errRate = countErrorRate(fullAbc, 0, 0);
+
+                    // Jos versio sopii suoraan pitkähuilulle ilman suuria virheitä (virhetoleranssi esim. 10%)
+                    if (errRate <= 0.10) {
+                        filteredMatches.push({
+                            title: `${tune.name} (The Session - Versio ${s + 1})`,
+                            abc: fullAbc,
+                            type: tune.type,
+                            errorRate: errRate
+                        });
+                    }
+                }
+            }
+        }
+
+        // 3. Tulostetaan vain suodatetut, pitkähuilulle sopivat kappaleet hakutuloksiin
+        if (filteredMatches.length === 0) {
+            resultsDiv.innerHTML = "The Sessionista löytyi kappaleita, mutta mikään niiden versioista ei sopinut suoraan D-pitkähuilulle.";
+            return;
+        }
+
+        resultsDiv.innerHTML = ""; // Tyhjennetään latausteksti
+        
+        filteredMatches.forEach(item => {
+            var btn = document.createElement('button');
+            btn.className = "song-button"; // Käyttää sivun omia tyylejä
+            btn.style.display = "block";
+            btn.style.width = "100%";
+            btn.style.textAlign = "left";
+            btn.style.margin = "4px 0";
+            btn.style.padding = "6px";
+            
+            // Näytetään nimen lisäksi kappaletyyppi (esim. jig/reel) ja virheprosentti
+            btn.innerHTML = `<strong>${item.title}</strong> <small>(${item.type}) - Virhe: ${(item.errorRate * 100).toFixed(0)}%</small>`;
+            
+            btn.onclick = function() {
+                document.getElementById('abcInput').value = item.abc;
+                window.currentTranspose = 0;
+                window.currentOctave = 0;
+                processAbc();
+                resultsDiv.style.display = "none";
+            };
+            resultsDiv.appendChild(btn);
+        });
+
+    } catch (error) {
+        console.error("The Session haku epäonnistui:", error);
+        resultsDiv.innerHTML = "Virhe haettaessa tietoa The Sessionista. Tarkista verkkoyhteys.";
+    }
+}
+
+
 // Haku (smartSearch false)
 document.getElementById('searchBtn').onclick = function() { 
     hideUndo();
@@ -1094,6 +1190,18 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 
 function smartSearch(isRandom) {
+	// --- UUSI SESSION-REITITYS ---
+    var sourceSelect = document.getElementById('gistSelect');
+    var selectedSource = sourceSelect ? sourceSelect.value : '';
+
+    if (!isRandom && selectedSource === 'thesession') {
+        var query = document.getElementById('searchQuery').value.trim();
+        if (query) {
+            searchFromTheSession(query);
+        }
+        return; // Keskeytetään normaali haku lennosta
+    }
+    // ----------------------------
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
     resultsDiv.innerHTML = "Analysoidaan...";
     resultsDiv.style.display = "block";
