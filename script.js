@@ -1190,14 +1190,15 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 
 function smartSearch(isRandom) {
-	 // --- REITITYS TOISEN TYÖKALUN THE SESSION -HAULLE ---
+	 // --- REITITYS THE SESSION -HAULLE (Toimii kaikilla Hae-napeilla 1-4) ---
     var sourceSelect = document.getElementById('sourceFilter');
     var selectedSource = sourceSelect ? sourceSelect.value : '';
     var query = document.getElementById('searchInput').value.trim();
 
+    // Jos valittuna on The Session ja kyseessä on haku (ei arvonta)
     if (!isRandom && selectedSource === 'thesession') {
         if (query !== "") {
-            haeTheSession(query); // Kutsuu toisen työkalusi mukaista hakufunktiota
+            haeTheSession(query); // Kutsuu toisesta työkalusta tuttua hakua
         } else {
             var resultsDiv = document.getElementById('searchResults');
             if (resultsDiv) {
@@ -1205,9 +1206,9 @@ function smartSearch(isRandom) {
                 resultsDiv.style.display = "block";
             }
         }
-        return; // Keskeytetään normaali paikallinen haku lennosta
+        return; // Keskeytetään paikallinen arkistohaku lennosta
     }
-    // --------------------------
+    // ------------------------
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
     resultsDiv.innerHTML = "Analysoidaan...";
     resultsDiv.style.display = "block";
