@@ -1193,11 +1193,16 @@ function smartSearch(isRandom) {
 	// --- UUSI SESSION-REITITYS ---
     var sourceSelect = document.getElementById('gistSelect');
     var selectedSource = sourceSelect ? sourceSelect.value : '';
+    // Käytetään oikeaa id:tä 'searchInput' 
+    var query = document.getElementById('searchInput').value.toLowerCase().trim();
+    var resultsDiv = document.getElementById('searchResults');
 
     if (!isRandom && selectedSource === 'thesession') {
-        var query = document.getElementById('searchQuery').value.trim();
-        if (query) {
+        if (query !== "") {
             searchFromTheSession(query);
+        } else {
+             resultsDiv.innerHTML = "Kirjoita hakusana etsiäksesi The Sessionista.";
+             resultsDiv.style.display = "block";
         }
         return; // Keskeytetään normaali haku lennosta
     }
