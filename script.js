@@ -1190,16 +1190,17 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 
 function smartSearch(isRandom) {
-	 // --- LOPULLINEN JA VARMA REITITYS THE SESSIONILLE ---
+	 // --- KORJATTU REITITYS THE SESSIONILLE (Oikealla funktion nimellä) ---
     var sourceSelect = document.getElementById('sourceFilter');
     var selectedSource = sourceSelect ? sourceSelect.value : '';
 
-    if (!isRandom && selectedSource === 'thesession') {
+    if (selectedSource === 'thesession') {
         var queryInput = document.getElementById('searchInput');
-        var query = queryInput ? queryInput.value.trim().toLowerCase() : ''; // Vaatii pienen alkukirjaimen!
+        var query = queryInput ? queryInput.value.trim() : '';
         
         if (query !== "") {
-            haeTheSession(query); // Kutsutaan suoraan toimivaa hakuasi
+            // Kutsutaan tiedostostasi löytyvää OIKEAA funktiota:
+            searchFromTheSession(query); 
         } else {
             var resultsDiv = document.getElementById('searchResults');
             if (resultsDiv) {
@@ -1207,7 +1208,7 @@ function smartSearch(isRandom) {
                 resultsDiv.style.display = "block";
             }
         }
-        return; // Pysäyttää funktion suorituksen TÄHÄN, jotta tulokset eivät ylikirjoitu
+        return; // Katkaisee suorituksen välittömästi, jotta tulokset eivät nollaannu
     }
     // -----------------------
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
