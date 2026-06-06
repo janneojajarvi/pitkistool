@@ -1190,16 +1190,16 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
 
 function smartSearch(isRandom) {
-	 // --- POMMINVARMA REITITYS THE SESSIONILLE ---
+	 // --- PUHDAS REITITYS THE SESSIONILLE ---
     var sourceSelect = document.getElementById('sourceFilter');
     var selectedSource = sourceSelect ? sourceSelect.value : '';
+    
+    // Otetaan hakusana täysin alkuperäisessä muodossa ilman toLowerCase-muunnosta
+    var rawQuery = document.getElementById('searchInput').value.trim();
 
-    if (selectedSource === 'thesession') {
-        var queryInput = document.getElementById('searchInput');
-        var query = queryInput ? queryInput.value.trim() : '';
-        
-        if (query !== "") {
-            haeTheSession(query); // Kutsutaan suoraan sinun valmista hakuasi
+    if (!isRandom && selectedSource === 'thesession') {
+        if (rawQuery !== "") {
+            haeTheSession(rawQuery); // Lähetetään alkuperäinen hakusana sellaisenaan
         } else {
             var resultsDiv = document.getElementById('searchResults');
             if (resultsDiv) {
@@ -1207,9 +1207,9 @@ function smartSearch(isRandom) {
                 resultsDiv.style.display = "block";
             }
         }
-        return; // TÄRKEÄ: Estää absoluuttisesti kaiken muun koodin ajamisen tässä funktiossa!
+        return; // Katkaistaan suoritus välittömästi
     }
-    // -------------------------
+    // ---------------------
     var query = document.getElementById('searchInput').value.toLowerCase().trim();
     resultsDiv.innerHTML = "Analysoidaan...";
     resultsDiv.style.display = "block";
