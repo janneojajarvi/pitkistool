@@ -1186,7 +1186,7 @@ document.getElementById('fixNotesBtn3').onclick = function() {
 
     abcInput.value = fixedLines.join('\n');
     processAbc();
-};
+}; 
 
 
 function smartSearch(isRandom) {
