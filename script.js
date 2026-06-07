@@ -615,7 +615,15 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
 async function fetchFromTheSession(query, resDiv, filterMode, t) {
     try {
         const r = await fetch(`https://thesession.org/tunes/search?q=${query}&format=json`);
+        
+        document.getElementById('statusDisplay').innerText =
+  "HTTP: " + r.status;
+        
         const d = await r.json();
+        
+        document.getElementById('statusDisplay').innerText =
+  JSON.stringify(d).substring(0, 200);
+        
         if (!d || !d.tunes) return 0;
 
         let sessionFoundCount = 0;
