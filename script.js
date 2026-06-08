@@ -648,8 +648,16 @@ alert(
         let sessionFoundCount = 0;
         // Otetaan maksimissaan 15 parasta tulosta
         for (let tuneItem of d.tunes.slice(0, 15)) {
-            const tr = await fetch(`https://thesession.org/tunes/${tuneItem.id}?format=json`);
-            const td = await tr.json();
+
+    const tr = await fetch(
+        `https://thesession.org/tunes/${tuneItem.id}?format=json`
+    );
+
+    alert("Tune HTTP: " + tr.status);
+
+    const td = await tr.json();
+
+    alert("Tune nimi: " + td.name);
             if (!td.settings || td.settings.length === 0) continue;
 
             // Muunnetaan TheSessionin rakenne sovellukselle sopivaksi ABC-koodiksi
