@@ -677,8 +677,8 @@ M:${td.settings[0].meter}
 L:${td.settings[0].default_note_length || "1/8"}
 K:${td.settings[0].key}
 ${td.settings[0].abc}`;
-            alert(testAbc);
-return 0;
+            alert(JSON.stringify(td, null, 2).substring(0, 2000));
+return;
 
             let hasBends = false;
             if (filterMode === "easy") {
