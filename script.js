@@ -629,9 +629,17 @@ try {
 );
 
 const d = await r.json();
+
 alert("Tuloksia: " + d.tunes.length);
 
 if (!d || !d.tunes) return 0;
+
+alert(
+  "Ensimmäinen tulos: " +
+  d.tunes[0].id +
+  " - " +
+  d.tunes[0].name
+);
 
 
 
