@@ -111,6 +111,22 @@ var resultsDiv = document.getElementById('searchResults');
 var baseNoteSelect = document.getElementById('baseNote');
 
 // APUFUNKTIOT
+
+function debug(msg) {
+    document.getElementById("debugBox").innerText +=
+        msg + "\n";
+}
+
+debug("Searching: " + query);
+
+const r = await fetch(url);
+
+debug("Status: " + r.status);
+
+const d = await r.json();
+
+debug(JSON.stringify(d).substring(0,500));
+
 function getPitchValue(noteName) {  
     var baseMap = { 'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11 };  
     var val = baseMap[noteName.toUpperCase()] || 0;  
