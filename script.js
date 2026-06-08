@@ -677,10 +677,7 @@ M:${td.settings[0].meter}
 L:${td.settings[0].default_note_length || "1/8"}
 K:${td.settings[0].key}
 ${td.settings[0].abc}`;
-            resDiv.innerHTML =
-    "<pre style='white-space:pre-wrap;font-size:12px;text-align:left;'>" +
-    testAbc.replace(/</g, "&lt;") +
-    "</pre>";
+            alert(testAbc);
 return 0;
 
             let hasBends = false;
