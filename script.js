@@ -619,6 +619,13 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
     randomStrictSearchLimited();
 };
 
+function debug(msg) {
+    document.getElementById("debugBox").value =
+        typeof msg === "string"
+        ? msg
+        : JSON.stringify(msg, null, 2);
+}
+
 // Apufunktio TheSession.org-hakutulosten hakemiseen ja käsittelyyn
 async function fetchFromTheSession(query, resDiv, filterMode, t) {
   
@@ -661,9 +668,17 @@ alert(
             if (!td.settings || td.settings.length === 0) continue;
 
             // Muunnetaan TheSessionin rakenne sovellukselle sopivaksi ABC-koodiksi
-            let testAbc = `X:${td.id}\nT:${td.name}\nR:${td.type}\nS:https://thesession.org/tunes/${td.id}\nM:${td.settings[0].meter}\nK:${td.settings[0].key}\n${td.settings[0].abc.replace(/!/g, '\n')}`;
+            let testAbc =
+`X:${td.id}
+T:${td.name}
+R:${td.type}
+S:https://thesession.org/tunes/${td.id}
+M:${td.settings[0].meter}
+L:${td.settings[0].default_note_length || "1/8"}
+K:${td.settings[0].key}
+${td.settings[0].abc}`;
             alert(JSON.stringify(td.settings[0]).substring(0,500));
-return;
+
             let hasBends = false;
             if (filterMode === "easy") {
                 const oldAbc = abcInput.value;
@@ -700,6 +715,8 @@ return;
                 row.onclick = () => {
                     abcInput.value = testAbc;
                     userHasSelectedHarp = false;
+                    debug(testAbc);
+return;
                     processAbc();
                     analyzeKey(testAbc);
                     resDiv.style.display = "none";
