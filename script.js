@@ -625,29 +625,16 @@ async function fetchFromTheSession(query, resDiv, filterMode, t) {
 try {
 
     const r = await fetch(
-        `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
-    );
-
-    alert("HTTP " + r.status);
-
-} catch(e) {
-
-    alert("FETCH ERROR: " + e.message);
-
-}
-  try {
-        const r = await fetch(
-  `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
+    `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
 );
-        
-        document.getElementById('statusDisplay').innerText =
-  "HTTP: " + r.status;
-        
-        const text = await r.text();
 
-alert(text.substring(0,300));
+alert("HTTP " + r.status);
 
-return 0;
+const text = await r.text();
+
+alert(text.substring(0,500));
+
+return;
 
         let sessionFoundCount = 0;
         // Otetaan maksimissaan 15 parasta tulosta
