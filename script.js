@@ -622,7 +622,19 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
 // Apufunktio TheSession.org-hakutulosten hakemiseen ja käsittelyyn
 async function fetchFromTheSession(query, resDiv, filterMode, t) {
   alert("fetchFromTheSession käynnistyi");
+try {
 
+    const r = await fetch(
+        `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
+    );
+
+    alert("HTTP " + r.status);
+
+} catch(e) {
+
+    alert("FETCH ERROR: " + e.message);
+
+}
   try {
         const r = await fetch(
   `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
