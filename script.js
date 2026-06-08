@@ -677,7 +677,11 @@ M:${td.settings[0].meter}
 L:${td.settings[0].default_note_length || "1/8"}
 K:${td.settings[0].key}
 ${td.settings[0].abc}`;
-            alert(JSON.stringify(td.settings[0]).substring(0,500));
+            resDiv.innerHTML =
+    "<pre style='white-space:pre-wrap;font-size:12px;text-align:left;'>" +
+    testAbc.replace(/</g, "&lt;") +
+    "</pre>";
+return 0;
 
             let hasBends = false;
             if (filterMode === "easy") {
@@ -715,8 +719,7 @@ ${td.settings[0].abc}`;
                 row.onclick = () => {
                     abcInput.value = testAbc;
                     userHasSelectedHarp = false;
-                    debug(testAbc);
-return;
+                    
                     processAbc();
                     analyzeKey(testAbc);
                     resDiv.style.display = "none";
