@@ -714,11 +714,14 @@ return 0;
                 row.innerHTML = `🌐 ${hasBends ? "🪗 " : "✅ "} <b>${td.name}</b> (${td.settings[0].key})`;
                 
                 row.onclick = () => {
+    alert(testAbc);
+};
                     abcInput.value = testAbc;
                     userHasSelectedHarp = false;
                     
-                    processAbc();
                     analyzeKey(testAbc);
+                    processAbc();
+                    
                     resDiv.style.display = "none";
                 };
                 resDiv.appendChild(row);
