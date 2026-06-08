@@ -621,7 +621,9 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
 
 // Apufunktio TheSession.org-hakutulosten hakemiseen ja käsittelyyn
 async function fetchFromTheSession(query, resDiv, filterMode, t) {
-    try {
+  alert("fetchFromTheSession käynnistyi");
+
+  try {
         const r = await fetch(
   `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
 );
