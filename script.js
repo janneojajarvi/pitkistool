@@ -662,7 +662,8 @@ alert(
 
             // Muunnetaan TheSessionin rakenne sovellukselle sopivaksi ABC-koodiksi
             let testAbc = `X:${td.id}\nT:${td.name}\nR:${td.type}\nS:https://thesession.org/tunes/${td.id}\nM:${td.settings[0].meter}\nK:${td.settings[0].key}\n${td.settings[0].abc.replace(/!/g, '\n')}`;
-            
+            alert(JSON.stringify(td.settings[0]).substring(0,500));
+return;
             let hasBends = false;
             if (filterMode === "easy") {
                 const oldAbc = abcInput.value;
