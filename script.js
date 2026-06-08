@@ -117,15 +117,7 @@ function debug(msg) {
         msg + "\n";
 }
 
-debug("Searching: " + query);
 
-const r = await fetch(url);
-
-debug("Status: " + r.status);
-
-const d = await r.json();
-
-debug(JSON.stringify(d).substring(0,500));
 
 function getPitchValue(noteName) {  
     var baseMap = { 'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11 };  
@@ -630,17 +622,18 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
 // Apufunktio TheSession.org-hakutulosten hakemiseen ja käsittelyyn
 async function fetchFromTheSession(query, resDiv, filterMode, t) {
     try {
-        const r = await fetch(`https://thesession.org/tunes/search?q=${query}&format=json`);
+        const r = await fetch(
+  `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
+);
         
         document.getElementById('statusDisplay').innerText =
   "HTTP: " + r.status;
         
-        const d = await r.json();
-        
-        document.getElementById('statusDisplay').innerText =
-  JSON.stringify(d).substring(0, 200);
-        
-        if (!d || !d.tunes) return 0;
+        const text = await r.text();
+
+alert(text.substring(0,300));
+
+return 0;
 
         let sessionFoundCount = 0;
         // Otetaan maksimissaan 15 parasta tulosta
