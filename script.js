@@ -1898,12 +1898,14 @@ function renderResults(res) {
         d.innerHTML = "<strong>" + r.item.name + "</strong>";  
         d.onclick = function() {
 
-    abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
+    abcInput.value = (r.item.abc || r.item.notation || r.item.content || "")
+    .replace(/![^!]*!/g, '')
+    .replace(/!/g, '');
 
-    resultsDiv.style.display = "none";
+resultsDiv.style.display = "none";
 
     autoTransposeFromKey(abcInput.value);
-alert(abcInput.value);
+
     processAbc();
 
 };
