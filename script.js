@@ -1903,10 +1903,7 @@ function renderResults(res) {
     resultsDiv.style.display = "none";
 
     autoTransposeFromKey(abcInput.value);
-alert(
-  "ABC DATA:\n\n" +
-  abc.substring(0, 1500)
-);
+alert(abcInput.value);
     processAbc();
 
 };
