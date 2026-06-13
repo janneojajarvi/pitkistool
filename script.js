@@ -2149,6 +2149,10 @@ function setupFocusLayout(enable) {
 
 	// --- UUSI: Hae suoraan thesession.org API:sta ---
 var searchTheSessionBtn = document.getElementById('searchTheSessionBtn');
+var slider = document.getElementById('errorRateSlider');
+var allowedErrorThreshold = slider
+    ? (parseFloat(slider.value) / 100)
+    : 0.1;
 if (searchTheSessionBtn) {
     searchTheSessionBtn.onclick = async function() {
         hideUndo();
@@ -2230,7 +2234,7 @@ if (searchTheSessionBtn) {
                         });
 
                         // Hyväksytään kappale, jos vähintään 50% nuoteista on soitettavissa huilulla
-                        if (bestScore.rate < 0.5) {
+                      if (bestScore.rate <= allowedErrorThreshold) {
                             filtered.push({ 
                                 item: { 
                                     name: tuneData.name + " (" + setting.key + ") - Sopivuus: " + ((1 - bestScore.rate) * 100).toFixed(0) + "%", 
