@@ -2197,7 +2197,14 @@ if (searchTheSessionBtn) {
                         var meter = typeToMeter[tuneData.type] || '4/4';
                         
                                                 // Siivotaan rivinvaihdot pois ABC-rungosta, jotta tabulatuurit levittäytyvät koko kappaleeseen
-                        var cleanAbcBody = setting.abc.replace(/[\r\n]+/g, ' ').trim();
+                                                // Siivotaan The Sessionin raakadatasta soinnut, korukuviot ja erikoismerkit,
+                        // jotka rikkovat tabulatuurien kohdistuksen. Pidetään alkuperäiset rivinvaihdot.
+                        var cleanAbcBody = setting.abc
+                            .replace(/"[^"]*"/g, '')           // Poistaa soinnut, esim. "G"
+                            .replace(/~|{[^}]*}|![^!]+!/g, '') // Poistaa korukuviot ja ohjeet, esim. ~G, {def}, !trill!
+                            .replace(/\\/g, '')                // Poistaa rivin jatkamismerkit (\)
+                            .replace(/[\r]+/g, '')             // Siivoaa Windows-rivinvaihdot
+                            .trim();
 
                         // The Sessionin ABC on yleensä vain säveliä, joten rakennetaan vaadittu otsikosto
                         var abc = "X:1\n" +
@@ -2206,6 +2213,7 @@ if (searchTheSessionBtn) {
                                   "L:1/8\n" +
                                   "K:" + setting.key + "\n" +
                                   cleanAbcBody;
+
 
 
                         var keyMatch = setting.key.match(/^([A-G][b#]?)(.*)/i);
