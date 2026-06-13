@@ -2145,6 +2145,128 @@ function setupFocusLayout(enable) {
     }, 100);
 }
 
+	// --- UUSI: Hae suoraan thesession.org API:sta ---
+var searchTheSessionBtn = document.getElementById('searchTheSessionBtn');
+if (searchTheSessionBtn) {
+    searchTheSessionBtn.onclick = async function() {
+        hideUndo();
+        var query = document.getElementById('searchInput').value.toLowerCase().trim();
+        var resultsDiv = document.getElementById('searchResults');
+        
+        if (query === "") {
+            alert("Kirjoita hakusana (esim. polka tai kappaleen nimi) etsiäksesi thesession.org:ista.");
+            return;
+        }
+
+        // Näytetään latausilmoitus
+        resultsDiv.innerHTML = "Haetaan The Session -tietokannasta...";
+        resultsDiv.style.display = "block";
+
+        try {
+            // 1. Etsi kappaleiden ID:t ja nimet thesession.org API:sta
+            var searchRes = await fetch("https://thesession.org/tunes/search?q=" + encodeURIComponent(query) + "&format=json");
+            var searchData = await searchRes.json();
+            
+            if (!searchData.tunes || searchData.tunes.length === 0) {
+                resultsDiv.innerHTML = "Ei osumia thesession.org:ista tällä hakusanalla.";
+                return;
+            }
+
+            // Rajoitetaan haku kymmeneen ensimmäiseen osumaan, ettei API tai selain tukkeudu
+            var topTunes = searchData.tunes.slice(0, 10);
+            var filtered = [];
+            var semitones = {'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11};
+
+            // Muunnetaan The Sessionin kappaletyypit ABC-tahtilajeiksi
+            var typeToMeter = {
+                'jig': '6/8', 'slip jig': '9/8', 'reel': '4/4', 'hornpipe': '4/4',
+                'polka': '2/4', 'waltz': '3/4', 'slide': '12/8', 'march': '4/4', 'strathspey': '4/4'
+            };
+
+            // 2. Haetaan kunkin kappaleen tarkat ABC-nuotit ja versiot (settings)
+            for (var i = 0; i < topTunes.length; i++) {
+                resultsDiv.innerHTML = "Ladataan thesession.org osumia (" + (i+1) + "/" + topTunes.length + ")...";
+                var tuneId = topTunes[i].id;
+                
+                var tuneRes = await fetch("https://thesession.org/tunes/" + tuneId + "?format=json");
+                var tuneData = await tuneRes.json();
+
+                if (tuneData.settings && tuneData.settings.length > 0) {
+                    for (var j = 0; j < tuneData.settings.length; j++) {
+                        var setting = tuneData.settings[j];
+                        var meter = typeToMeter[tuneData.type] || '4/4';
+                        
+                        // The Sessionin ABC on yleensä vain säveliä, joten rakennetaan vaadittu otsikosto
+                        var abc = "X:1\n" +
+                                  "T:" + tuneData.name + " (The Session #" + setting.id + ")\n" +
+                                  "M:" + meter + "\n" +
+                                  "L:1/8\n" +
+                                  "K:" + setting.key + "\n" +
+                                  setting.abc;
+
+                        var keyMatch = setting.key.match(/^([A-G][b#]?)(.*)/i);
+                        if (!keyMatch) continue;
+
+                        var startNote = keyMatch[1];
+                        var mode = (keyMatch[2] || "").toLowerCase().trim();
+                        var startVal = semitones[startNote] || 0;
+
+                        var targets = getTargetTranspositions(mode);
+                        var bestScore = { rate: 1.1, oct: 0, trans: 0 };
+
+                        // Kokeillaan transponoinnit samalla logiikalla kuin alkuperäisessä haussa
+                        targets.forEach(function(targetVal) {
+                            var transOptions = [targetVal - startVal, (targetVal - startVal) + 12, (targetVal - startVal) - 12];
+                            transOptions.forEach(function(trans) {
+                                [-1, 0, 1].forEach(function(oct) {
+                                    var rate = countErrorRate(abc, trans, oct);
+                                    if (rate < bestScore.rate) {
+                                        bestScore = { rate: rate, oct: oct, trans: trans };
+                                    }
+                                });
+                            });
+                        });
+
+                        // Hyväksytään kappale, jos vähintään 50% nuoteista on soitettavissa huilulla
+                        if (bestScore.rate < 0.5) {
+                            filtered.push({ 
+                                item: { 
+                                    name: tuneData.name + " (" + setting.key + ") - Sopivuus: " + ((1 - bestScore.rate) * 100).toFixed(0) + "%", 
+                                    abc: abc 
+                                }, 
+                                oct: bestScore.oct, 
+                                trans: bestScore.trans 
+                            });
+                        }
+                    }
+                }
+            }
+            
+            // 3. Renderöidään tulokset ruudulle
+            if (filtered.length > 0) {
+                renderResults(filtered);
+                
+                // Lisätään tuttu "Lisää kaikki hakutulokset suosikkeihin" -nappi
+                var addAllBtn = document.createElement('button');
+                addAllBtn.innerHTML = "⭐ Lisää kaikki hakutulokset suosikkeihin";
+                addAllBtn.className = "add-all-favorites-btn";
+                addAllBtn.style = "display: block; width: 100%; margin: 10px 0; padding: 10px; background: #ffc107; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;";
+                
+                addAllBtn.onclick = function() {
+                    addAllResultsToFavorites(filtered);
+                };
+                resultsDiv.insertBefore(addAllBtn, resultsDiv.firstChild);
+            } else {
+                resultsDiv.innerHTML = "Löydetyt thesession.org tulokset eivät sopineet pitkähuilulle (yli 50% virheitä).";
+            }
+
+        } catch (err) {
+            resultsDiv.innerHTML = "Virhe haettaessa thesession.org:ista: " + err.message;
+            console.error("TheSession API error:", err);
+        }
+    };
+}
+
 
 // Globaali funktio soitinasetusten hakemiseen
 window.getAudioOptions = function() {
