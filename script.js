@@ -1896,28 +1896,26 @@ function renderResults(res) {
         var d = document.createElement('div');  
         d.className = 'result-item';  
         d.innerHTML = "<strong>" + r.item.name + "</strong>";  
-        d.onclick = function() {
-
-    abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
-
-    // 2. TÄRKEÄÄ: Jos haussa on määritelty transponointi/oktaavi (kuten The Session -haussasi teimme), 
-    // ne pitää asettaa ennen kuin kutsut processAbc()-funktiota.
-    if (r.oct !== undefined) window.currentOctave = r.oct;
-    if (r.trans !== undefined) window.currentTranspose = r.trans;
-
-    // 3. Sulje valikko
-    resultsDiv.style.display = "none";
-
-    // 4. Automaattinen transponointi (jos käytät tätä funktiota)
-    autoTransposeFromKey(abcInput.value);
-
-    // 5. Tämä tekee taian (generoi w:-rivit eli tabulatuurit)
-    processAbc();
-};
         
+        d.onclick = function() {
+            // Asetetaan nuotit
+            abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
+
+            // Jos haussa on oktaavi/transponointi, asetetaan ne
+            if (r.oct !== undefined) window.currentOctave = r.oct;
+            if (r.trans !== undefined) window.currentTranspose = r.trans;
+
+            // Suljetaan valikko
+            resultsDiv.style.display = "none";
+
+            // Tämä funktio (jonka sinulla on jo olemassa)
+            // laskee tabulatuurit ja piirtää kaiken oikein
+            processAbc();
+        };
         resultsDiv.appendChild(d);  
     });  
 }
+
 
 // --- UUSI APUFUNKTIO: Transponoi ABC-tekstin fyysisesti latausta varten ---
 function getTransposedAbcText(abcText, semitones) {
@@ -2239,7 +2237,7 @@ var abc = "X:1\n" +
 // NYT KUTSUMME PIIRTÄJÄÄ (Tämä on avain!)
 // Sen sijaan että renderöisit suoraan, aseta tämä koodi "taktiikaksi"
 // ja kutsu olemassa olevaa funktiota, joka osaa piirtää:
-visualizeAbc(abc); 
+
 
 
 
