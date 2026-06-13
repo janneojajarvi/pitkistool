@@ -111,14 +111,6 @@ var resultsDiv = document.getElementById('searchResults');
 var baseNoteSelect = document.getElementById('baseNote');
 
 // APUFUNKTIOT
-
-function debug(msg) {
-    document.getElementById("debugBox").innerText +=
-        msg + "\n";
-}
-
-
-
 function getPitchValue(noteName) {  
     var baseMap = { 'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11 };  
     var val = baseMap[noteName.toUpperCase()] || 0;  
@@ -619,138 +611,10 @@ document.getElementById('randomStrictLimitedBtn').onclick = function() {
     randomStrictSearchLimited();
 };
 
-function debug(msg) {
-    document.getElementById("debugBox").value =
-        typeof msg === "string"
-        ? msg
-        : JSON.stringify(msg, null, 2);
-}
-
-// Apufunktio TheSession.org-hakutulosten hakemiseen ja käsittelyyn
-async function fetchFromTheSession(query, resDiv, filterMode, t) {
-  
-try {
-
-    const r = await fetch(
-  `https://thesession.org/tunes/search?q=${encodeURIComponent(query)}&format=json`
-);
-
-const d = await r.json();
-
-alert("Tuloksia: " + d.tunes.length);
-
-if (!d || !d.tunes) return 0;
-
-alert(
-  "Ensimmäinen tulos: " +
-  d.tunes[0].id +
-  " - " +
-  d.tunes[0].name
-);
-
-
-
-
-
-        let sessionFoundCount = 0;
-        // Otetaan maksimissaan 15 parasta tulosta
-        for (let tuneItem of d.tunes.slice(0, 15)) {
-
-    const tr = await fetch(
-        `https://thesession.org/tunes/${tuneItem.id}?format=json`
-    );
-
-    alert("Tune HTTP: " + tr.status);
-
-    const td = await tr.json();
-
-    alert("Tune nimi: " + td.name);
-            if (!td.settings || td.settings.length === 0) continue;
-
-            // Muunnetaan TheSessionin rakenne sovellukselle sopivaksi ABC-koodiksi
-            let testAbc =
-`X:${td.id}
-T:${td.name}
-R:${td.type}
-S:https://thesession.org/tunes/${td.id}
-M:${td.settings[0].meter}
-L:${td.settings[0].default_note_length || "1/8"}
-K:${td.settings[0].key}
-${td.settings[0].abc}`;
-            alert(JSON.stringify(td, null, 2).substring(0, 2000));
-return;
-
-            let hasBends = false;
-            if (filterMode === "easy") {
-                const oldAbc = abcInput.value;
-                abcInput.value = testAbc;
-                if (typeof analyzeKey === "function") analyzeKey(testAbc);
-                if (typeof autoOptimize === "function") autoOptimize();
-                
-                let optimizedAbc = abcInput.value;
-                let harpShift = parseInt(harpKeySelect.value);
-
-                optimizedAbc.split('\n').forEach(line => {
-                    if (/^[A-Z]:/.test(line) || line.trim() === "") return;
-                    line.replace(/([\^_=]?)([A-Ga-gHh])([,']*)/g, (match, acc, note, octs) => {
-                        let absPitch = getPitchValue(acc, note, octs);
-                        let relPitch = absPitch - harpShift + ((window.octaveOffset || 0) * 12);
-                        const tab = harpMap[relPitch.toString()] || "";
-                        if (tab === "" || tab.includes("'") || tab.includes("o")) hasBends = true;
-                    });
-                });
-                abcInput.value = oldAbc;
-                testAbc = optimizedAbc;
-            }
-
-            if (!hasBends || filterMode === "all") {
-                // Jos listassa oli "Ei löytynyt" -ilmoitus, tyhjennetään se ensimmäisen osuman kohdalla
-                if (resDiv.innerHTML.includes(t.msgNotFoundSrch || "Ei löytynyt")) {
-                    resDiv.innerHTML = "";
-                }
-                sessionFoundCount++;
-                const row = document.createElement('div');
-                row.className = "search-item";
-                row.innerHTML = `🌐 ${hasBends ? "🪗 " : "✅ "} <b>${td.name}</b> (${td.settings[0].key})`;
-                
-                row.onclick = () => {
-    alert(testAbc);
-};
-                    abcInput.value = testAbc;
-                    userHasSelectedHarp = false;
-                    
-                    analyzeKey(testAbc);
-                    processAbc();
-                    
-                    resDiv.style.display = "none";
-                };
-                resDiv.appendChild(row);
-            }
-        }
-        return sessionFoundCount;
-    } catch (e) {
-        console.error("Virhe TheSession-haussa:", e);
-        return 0;
-    }
-}
-
 // Haku (smartSearch false)
-document.getElementById('searchBtn').onclick = async function() {
+document.getElementById('searchBtn').onclick = function() { 
     hideUndo();
-
-    const source = document.getElementById('sourceFilter').value;
-    const query = document.getElementById('searchInput').value.trim();
-
-    if (source === "Sessionsetit" && query !== "") {
-        const resultsDiv = document.getElementById('searchResults');
-        resultsDiv.innerHTML = "";
-        resultsDiv.style.display = "block";
-
-        await fetchFromTheSession(query, resultsDiv, "all");
-        return;
-    }
-
-    smartSearch(false);
+    smartSearch(false); 
 };
   
 // Arvonta 2 (randomStrictSearch)
