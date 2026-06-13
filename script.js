@@ -2266,7 +2266,7 @@ var allowedErrorThreshold = slider
                 };
                 resultsDiv.insertBefore(addAllBtn, resultsDiv.firstChild);
             } else {
-                resultsDiv.innerHTML = "Löydetyt thesession.org tulokset eivät sopineet pitkähuilulle (yli 50% virheitä).";
+                resultsDiv.innerHTML = "Löydetyt thesession.org tulokset eivät sopineet pitkähuilulle (yli error-sliderin enimmäismäärä virheitä).";
             }
 
         } catch (err) {
