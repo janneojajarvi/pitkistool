@@ -378,7 +378,7 @@ else {
         wLine += " " + sym;  
     }  
     finalAbc += line + "\n";  
-    if (foundNotes) finalAbc += wLine + "\n";  
+    finalAbc += wLine + "\n";  
 }  
 
 if (!finalAbc.includes("Q:")) {
