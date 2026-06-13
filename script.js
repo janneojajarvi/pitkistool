@@ -1900,12 +1900,19 @@ function renderResults(res) {
 
     abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
 
+    // 2. TÄRKEÄÄ: Jos haussa on määritelty transponointi/oktaavi (kuten The Session -haussasi teimme), 
+    // ne pitää asettaa ennen kuin kutsut processAbc()-funktiota.
+    if (r.oct !== undefined) window.currentOctave = r.oct;
+    if (r.trans !== undefined) window.currentTranspose = r.trans;
+
+    // 3. Sulje valikko
     resultsDiv.style.display = "none";
 
+    // 4. Automaattinen transponointi (jos käytät tätä funktiota)
     autoTransposeFromKey(abcInput.value);
 
+    // 5. Tämä tekee taian (generoi w:-rivit eli tabulatuurit)
     processAbc();
-
 };
         
         resultsDiv.appendChild(d);  
@@ -2198,21 +2205,42 @@ if (searchTheSessionBtn) {
                         
                                                 // Siivotaan rivinvaihdot pois ABC-rungosta, jotta tabulatuurit levittäytyvät koko kappaleeseen
                                                 // Siivotaan The Sessionin raakadatasta soinnut, korukuviot ja erikoismerkit,
-                        // jotka rikkovat tabulatuurien kohdistuksen. Pidetään alkuperäiset rivinvaihdot.
+                                                // --- TEHOPUHDISTUS: Siivotaan kaikki "valenuotit" ---
                         var cleanAbcBody = setting.abc
-                            .replace(/"[^"]*"/g, '')           // Poistaa soinnut, esim. "G"
-                            .replace(/~|{[^}]*}|![^!]+!/g, '') // Poistaa korukuviot ja ohjeet, esim. ~G, {def}, !trill!
-                            .replace(/\\/g, '')                // Poistaa rivin jatkamismerkit (\)
-                            .replace(/[\r]+/g, '')             // Siivoaa Windows-rivinvaihdot
+                            // 1. Kitarasoinnut (esim. "Am", "D7") pois
+                            .replace(/"[^"]*"/g, '')
+                            // 2. Korukuviot (esim. {def}) pois
+                            .replace(/\{[^}]*\}/g, '')
+                            // 3. Tekstikomennot ja dynamiikat (esim. !fermata!, !trill!) pois
+                            .replace(/![^!]+!/g, '')
+                            // 4. Inline-määritykset (esim. [K:G], [M:4/4]) pois
+                            .replace(/\[[A-Z]:[^\]]*\]/g, '')
+                            // 5. Moniääniset soinnut (esim. [D2F2A2]) muutetaan ensimmäiseksi säveleksi
+                            .replace(/\[([^\]]+)\]/g, function(match, inner) {
+                                var m = inner.match(/[\^_=]?[A-Ga-g][,']*[0-9\/]*/);
+                                return m ? m[0] : '';
+                            })
+                            // 6. Ylimääräiset soittotekniset merkit pois (~, H, L, M)
+                            .replace(/[~HLM]/g, '')
+                            // 7. Mahdolliset rivin jatkot pois
+                            .replace(/\\/g, '')
                             .trim();
 
-                        // The Sessionin ABC on yleensä vain säveliä, joten rakennetaan vaadittu otsikosto
-                        var abc = "X:1\n" +
-                                  "T:" + tuneData.name + " (The Session #" + setting.id + ")\n" +
-                                  "M:" + meter + "\n" +
-                                  "L:1/8\n" +
-                                  "K:" + setting.key + "\n" +
-                                  cleanAbcBody;
+                        // Rakennetaan vaadittu otsikosto
+                        // ... (cleanAbcBody on tehty)
+
+// Rakennetaan ABC vain otsikoilla ja nuottirungolla
+var abc = "X:1\n" +
+          "T:" + tuneData.name + "\n" +
+          "M:" + meter + "\n" +
+          "K:" + setting.key + "\n" +
+          cleanAbcBody;
+
+// NYT KUTSUMME PIIRTÄJÄÄ (Tämä on avain!)
+// Sen sijaan että renderöisit suoraan, aseta tämä koodi "taktiikaksi"
+// ja kutsu olemassa olevaa funktiota, joka osaa piirtää:
+visualizeAbc(abc); 
+
 
 
 
