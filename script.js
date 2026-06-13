@@ -378,7 +378,7 @@ else {
         wLine += " " + sym;  
     }  
     finalAbc += line + "\n";  
-    finalAbc += wLine + "\n";  
+    if (foundNotes) finalAbc += wLine + "\n";  
 }  
 
 if (!finalAbc.includes("Q:")) {
@@ -1896,26 +1896,24 @@ function renderResults(res) {
         var d = document.createElement('div');  
         d.className = 'result-item';  
         d.innerHTML = "<strong>" + r.item.name + "</strong>";  
-        
         d.onclick = function() {
-            // Asetetaan nuotit
-            abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
 
-            // Jos haussa on oktaavi/transponointi, asetetaan ne
-            if (r.oct !== undefined) window.currentOctave = r.oct;
-            if (r.trans !== undefined) window.currentTranspose = r.trans;
+    abcInput.value = r.item.abc || r.item.notation || r.item.content || "";
 
-            // Suljetaan valikko
-            resultsDiv.style.display = "none";
+    resultsDiv.style.display = "none";
 
-            // Tämä funktio (jonka sinulla on jo olemassa)
-            // laskee tabulatuurit ja piirtää kaiken oikein
-            processAbc();
-        };
+    autoTransposeFromKey(abcInput.value);
+alert(
+  "ABC DATA:\n\n" +
+  abc.substring(0, 1500)
+);
+    processAbc();
+
+};
+        
         resultsDiv.appendChild(d);  
     });  
 }
-
 
 // --- UUSI APUFUNKTIO: Transponoi ABC-tekstin fyysisesti latausta varten ---
 function getTransposedAbcText(abcText, semitones) {
@@ -2201,46 +2199,13 @@ if (searchTheSessionBtn) {
                         var setting = tuneData.settings[j];
                         var meter = typeToMeter[tuneData.type] || '4/4';
                         
-                                                // Siivotaan rivinvaihdot pois ABC-rungosta, jotta tabulatuurit levittäytyvät koko kappaleeseen
-                                                // Siivotaan The Sessionin raakadatasta soinnut, korukuviot ja erikoismerkit,
-                                                // --- TEHOPUHDISTUS: Siivotaan kaikki "valenuotit" ---
-                        var cleanAbcBody = setting.abc
-                            // 1. Kitarasoinnut (esim. "Am", "D7") pois
-                            .replace(/"[^"]*"/g, '')
-                            // 2. Korukuviot (esim. {def}) pois
-                            .replace(/\{[^}]*\}/g, '')
-                            // 3. Tekstikomennot ja dynamiikat (esim. !fermata!, !trill!) pois
-                            .replace(/![^!]+!/g, '')
-                            // 4. Inline-määritykset (esim. [K:G], [M:4/4]) pois
-                            .replace(/\[[A-Z]:[^\]]*\]/g, '')
-                            // 5. Moniääniset soinnut (esim. [D2F2A2]) muutetaan ensimmäiseksi säveleksi
-                            .replace(/\[([^\]]+)\]/g, function(match, inner) {
-                                var m = inner.match(/[\^_=]?[A-Ga-g][,']*[0-9\/]*/);
-                                return m ? m[0] : '';
-                            })
-                            // 6. Ylimääräiset soittotekniset merkit pois (~, H, L, M)
-                            .replace(/[~HLM]/g, '')
-                            // 7. Mahdolliset rivin jatkot pois
-                            .replace(/\\/g, '')
-                            .trim();
-
-                        // Rakennetaan vaadittu otsikosto
-                        // ... (cleanAbcBody on tehty)
-
-// Rakennetaan ABC vain otsikoilla ja nuottirungolla
-var abc = "X:1\n" +
-          "T:" + tuneData.name + "\n" +
-          "M:" + meter + "\n" +
-          "K:" + setting.key + "\n" +
-          cleanAbcBody;
-
-// NYT KUTSUMME PIIRTÄJÄÄ (Tämä on avain!)
-// Sen sijaan että renderöisit suoraan, aseta tämä koodi "taktiikaksi"
-// ja kutsu olemassa olevaa funktiota, joka osaa piirtää:
-
-
-
-
+                        // The Sessionin ABC on yleensä vain säveliä, joten rakennetaan vaadittu otsikosto
+                        var abc = "X:1\n" +
+                                  "T:" + tuneData.name + " (The Session #" + setting.id + ")\n" +
+                                  "M:" + meter + "\n" +
+                                  "L:1/8\n" +
+                                  "K:" + setting.key + "\n" +
+                                  setting.abc;
 
                         var keyMatch = setting.key.match(/^([A-G][b#]?)(.*)/i);
                         if (!keyMatch) continue;
