@@ -2149,12 +2149,15 @@ function setupFocusLayout(enable) {
 
 	// --- UUSI: Hae suoraan thesession.org API:sta ---
 var searchTheSessionBtn = document.getElementById('searchTheSessionBtn');
-var slider = document.getElementById('errorRateSlider');
+
+if (searchTheSessionBtn) {
+    searchTheSessionBtn.onclick = async function() {
+    	
+    var slider = document.getElementById('errorRateSlider');
 var allowedErrorThreshold = slider
     ? (parseFloat(slider.value) / 100)
     : 0.1;
-if (searchTheSessionBtn) {
-    searchTheSessionBtn.onclick = async function() {
+    
         hideUndo();
         var query = document.getElementById('searchInput').value.toLowerCase().trim();
         var resultsDiv = document.getElementById('searchResults');
