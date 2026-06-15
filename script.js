@@ -1206,8 +1206,11 @@ function searchWithSliderLimit() {
             candidates = candidates.filter(function(f) {
                 var abc = f.abc || f.notation || f.content || "";
                 var title = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-                return title.includes(query);
-            });
+                var origin = (abc.match(/^O:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+        
+                 // Etsii hakusanaa joko nimestä TAI alkuperämaasta O
+        return title.includes(query) || origin.includes(query);
+    });
         }
 
         var filtered = [];
@@ -1215,16 +1218,23 @@ function searchWithSliderLimit() {
         var resultCounter = 1; // Aloitetaan numerointi ykkösestä
 
         for (var i = 0; i < candidates.length; i++) {
-            var item = candidates[i];
-            if (!item) continue;
+    var item = candidates[i];
+    if (!item) continue;
 
-            var abc = item.abc || item.notation || item.content || "";
-            var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
-            if (!keyMatch) continue;
+    var abc = item.abc || item.notation || item.content || "";
+    var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
+    if (!keyMatch) continue;
 
-            var titleMatch = abc.match(/^T:\s*(.*)/m);
-            var originalTitle = titleMatch ? titleMatch[1].trim() : "Nimetön kappale";
-
+    // Haetaan nimi JA alkuperämaa
+    var titleMatch = abc.match(/^T:\s*(.*)/m);
+    var originMatch = abc.match(/^O:\s*(.*)/m);
+    
+    var originalTitle = titleMatch ? titleMatch[1].trim() : "Nimetön kappale";
+    var origin = originMatch ? " (" + originMatch[1].trim() + ")" : "";
+    
+    // Yhdistetään nimi ja alkuperämaa näytettäväksi
+    var displayName = originalTitle + origin + " - Sopivuus: " + ((1 - bestScore.rate) * 100).toFixed(0) + "%";
+    
             var startNote = keyMatch[1];
             var mode = (keyMatch[2] || "").toLowerCase().trim();
             var startVal = semitones[startNote] || 0;
