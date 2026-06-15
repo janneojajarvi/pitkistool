@@ -1104,20 +1104,25 @@ function smartSearch(isRandom) {
     if (isRandom) {
         candidates = [candidates[Math.floor(Math.random() * candidates.length)]];
     } 
-    // LAAJENNETTU HAKU-LOGIIKKA (T:, O: ja S: kentät)
-    else if (query !== "") {
-        candidates = candidates.filter(function(f) {
-            var abc = f.abc || f.notation || f.content || "";
-            // Haetaan metatiedot ABC-tekstistä
-            var title = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-            var origin = (abc.match(/^O:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-            var origin = (abc.match(/^R:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-            var source = (abc.match(/^S:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-            
-            // Tarkistetaan löytyykö haku jostain näistä neljästä
-            return title.includes(query) || origin.includes(query) || source.includes(query);
-        });
-    }
+    // LAAJENNETTU HAKU-LOGIIKKA (T:, O:, R: ja S: kentät)
+else if (query !== "") {
+    candidates = candidates.filter(function(f) {
+        var abc = f.abc || f.notation || f.content || "";
+        
+        // Etsitään kaikki kentät omina muuttujinaan
+        var title  = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+        var origin = (abc.match(/^O:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+        var rhythm = (abc.match(/^R:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+        var source = (abc.match(/^S:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+        
+        // Tarkistetaan löytyykö haku jostain näistä neljästä
+        return title.includes(query) || 
+               origin.includes(query) || 
+               rhythm.includes(query) || 
+               source.includes(query);
+    });
+}
+
    
 
     var filtered = [];
