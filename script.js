@@ -1109,19 +1109,27 @@ else if (query !== "") {
     candidates = candidates.filter(function(f) {
         var abc = f.abc || f.notation || f.content || "";
         
-        // Etsitään kaikki kentät omina muuttujinaan
         var title  = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
         var origin = (abc.match(/^O:\s*(.*)/m) || ["", ""])[1].toLowerCase();
         var rhythm = (abc.match(/^R:\s*(.*)/m) || ["", ""])[1].toLowerCase();
         var source = (abc.match(/^S:\s*(.*)/m) || ["", ""])[1].toLowerCase();
         
-        // Tarkistetaan löytyykö haku jostain näistä neljästä
-        return title.includes(query) || 
-               origin.includes(query) || 
-               rhythm.includes(query) || 
-               source.includes(query);
+        // TESTAUS: Näytä mitä haetaan jokaisesta tiedostosta
+        // alert("Tarkistetaan kappale: " + title + "\nAlkuperämaa: " + origin);
+        
+        var matchFound = title.includes(query) || 
+                         origin.includes(query) || 
+                         rhythm.includes(query) || 
+                         source.includes(query);
+                         
+        if (matchFound) {
+            alert("Löytyi osuma!\nNimi: " + title + "\nAlkuperä (O): " + origin);
+        }
+        
+        return matchFound;
     });
 }
+
 
    
 
