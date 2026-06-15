@@ -20,6 +20,7 @@ var synth = null;
 
 // 1. Datan lataus pyydetyistä lähteistä
 async function loadGistData() {
+	var statusDiv = document.getElementById('loadingStatus');
 var urls = [
 	{ type: "Tarkistusnuotit", url: "tarkistusnuotit9.js" },
         { type: "Tarkistusnuotit", url: "korjaustsekki3.js" },
@@ -72,6 +73,10 @@ var urls = [
 
 for (var i = 0; i < urls.length; i++) {  
     try {  
+    	// Päivitetään status jokaisen tiedoston kohdalla
+            if (statusDiv) {
+                statusDiv.innerText = "Ladataan tiedostoa " + (i + 1) + "/" + urls.length + ": " + urls[i].url;
+            }
         var response = await fetch(urls[i].url);
         if (!response.ok) throw new Error("Palvelin vastasi: " + response.status);  
         var text = await response.text();  
@@ -94,6 +99,12 @@ for (var i = 0; i < urls.length; i++) {
         } catch (err) { 
             console.error("Latausvirhe linkissä: " + urls[i].url, err); 
         }  
+    }
+    // Kun valmis
+    if (statusDiv) {
+        statusDiv.innerText = "✅ Kaikki " + window.harpLibrary.length + " kappaletta ladattu!";
+        // Piilotetaan ilmoitus 3 sekunnin kuluttua
+        setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
     }
     console.log("KAIKKI LADATTU:", window.harpLibrary.length);
 }
