@@ -1225,53 +1225,45 @@ function searchWithSliderLimit() {
     var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
     if (!keyMatch) continue;
 
-    // Haetaan nimi JA alkuperämaa
-    var titleMatch = abc.match(/^T:\s*(.*)/m);
-    var originMatch = abc.match(/^O:\s*(.*)/m);
-    
-    var originalTitle = titleMatch ? titleMatch[1].trim() : "Nimetön kappale";
-    var origin = originMatch ? " (" + originMatch[1].trim() + ")" : "";
-    
-    // Yhdistetään nimi ja alkuperämaa näytettäväksi
-    var displayName = originalTitle + origin + " - Sopivuus: " + ((1 - bestScore.rate) * 100).toFixed(0) + "%";
-    
-            var startNote = keyMatch[1];
-            var mode = (keyMatch[2] || "").toLowerCase().trim();
-            var startVal = semitones[startNote] || 0;
+    var startNote = keyMatch[1];
+    var mode = (keyMatch[2] || "").toLowerCase().trim();
+    var startVal = semitones[startNote] || 0;
+    var targets = getTargetTranspositions(mode);
+    var bestScore = { rate: 1.1, oct: 0, trans: 0 }; // MÄÄRITELTY TÄSSÄ
 
-            var targets = getTargetTranspositions(mode);
-            var bestScore = { rate: 1.1, oct: 0, trans: 0 };
-
-            // Kokeillaan kaikki transponointivaihtoehdot
-            targets.forEach(function(targetVal) {
-                var transOptions = [targetVal - startVal, (targetVal - startVal) + 12, (targetVal - startVal) - 12];
-                transOptions.forEach(function(trans) {
-                    [-1, 0, 1].forEach(function(oct) {
-                        var rate = countErrorRate(abc, trans, oct);
-                        if (rate < bestScore.rate) {
-                            bestScore = { rate: rate, oct: oct, trans: trans };
-                        }
-                    });
-                });
+    // Kokeillaan transponoinnit
+    targets.forEach(function(targetVal) {
+        var transOptions = [targetVal - startVal, (targetVal - startVal) + 12, (targetVal - startVal) - 12];
+        transOptions.forEach(function(trans) {
+            [-1, 0, 1].forEach(function(oct) {
+                var rate = countErrorRate(abc, trans, oct);
+                if (rate < bestScore.rate) {
+                    bestScore = { rate: rate, oct: oct, trans: trans };
+                }
             });
+        });
+    });
 
-            // Jos kappaleen paras transponointi alittaa tai on yhtä suuri kuin sallittu virheprosentti
-            if (bestScore.rate <= allowedErrorThreshold) {
-                
-                // Numeroidaan tulos ja lisätään virheprosentti näkyviin
-                var displayTitle = resultCounter + ". " + originalTitle + " (" + (bestScore.rate * 100).toFixed(0) + " %)";
-                
-                filtered.push({ 
-                    item: { name: displayTitle, abc: abc }, // Luodaan väliaikainen objekti renderöintiä varten
-                    oct: bestScore.oct, 
-                    trans: bestScore.trans 
-                });
-                resultCounter++;
-            }
+    // NYT kun bestScore on laskettu, voidaan tehdä se nimi ja filtteröinti:
+    if (bestScore.rate <= allowedErrorThreshold) {
+        var titleMatch = abc.match(/^T:\s*(.*)/m);
+        var originMatch = abc.match(/^O:\s*(.*)/m);
+        
+        var originalTitle = titleMatch ? titleMatch[1].trim() : "Nimetön kappale";
+        var origin = originMatch ? " (" + originMatch[1].trim() + ")" : "";
+        var displayTitle = resultCounter + ". " + originalTitle + origin + " (" + (bestScore.rate * 100).toFixed(0) + " %)";
+        
+        filtered.push({ 
+            item: { name: displayTitle, abc: abc }, 
+            oct: bestScore.oct, 
+            trans: bestScore.trans 
+        });
+        resultCounter++;
+    }
+    
+    if (filtered.length >= 200) break;
+}
 
-            // Katkaistaan haku 200 kappaleen kohdalla, ettei selain jäädy täysin valtavilla tietokannoilla
-            if (filtered.length >= 200) break;
-        }
 
         renderResults(filtered);
         
