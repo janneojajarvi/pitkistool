@@ -1122,9 +1122,9 @@ else if (query !== "") {
                          rhythm.includes(query) || 
                          source.includes(query);
                          
-        if (matchFound) {
-            alert("Löytyi osuma!\nNimi: " + title + "\nAlkuperä (O): " + origin);
-        }
+       // if (matchFound) {
+        // alert("Löytyi osuma!\nNimi: " + title + "\nAlkuperä (O): " + origin);
+        // }
         
         return matchFound;
     });
