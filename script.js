@@ -1360,11 +1360,15 @@ function searchWithSliderAndRangeLimit(maxNoteLimit) {
 
     setTimeout(function() {
         var candidates = getFilteredLibrary();
+        // 1. PÄIVITETTY HAKU: Lisätty O: ja S:
         if (query !== "") {
             candidates = candidates.filter(function(f) {
                 var abc = f.abc || f.notation || f.content || "";
-                var title = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
-                return title.includes(query);
+                var title  = (abc.match(/^T:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+                var origin = (abc.match(/^O:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+                var source = (abc.match(/^S:\s*(.*)/m) || ["", ""])[1].toLowerCase();
+                
+                return title.includes(query) || origin.includes(query) || source.includes(query);
             });
         }
 
@@ -1404,10 +1408,17 @@ function searchWithSliderAndRangeLimit(maxNoteLimit) {
                 });
             });
 
+            // 2. PÄIVITETTY NIMENMUODOSTUS: Lisätty O: ja S:
             if (bestScore.rate <= allowedErrorThreshold) {
-                var titleMatch = abc.match(/^T:\s*(.*)/m);
+                var titleMatch  = abc.match(/^T:\s*(.*)/m);
+                var originMatch = abc.match(/^O:\s*(.*)/m);
+                var sourceMatch = abc.match(/^S:\s*(.*)/m);
+                
                 var originalTitle = titleMatch ? titleMatch[1].trim() : "Nimetön";
-                var displayTitle = resultCounter + ". " + originalTitle + " (" + (bestScore.rate * 100).toFixed(0) + " %)";
+                var origin = originMatch ? " (" + originMatch[1].trim() + ")" : "";
+                var source = sourceMatch ? " [" + sourceMatch[1].trim() + "]" : "";
+                
+                var displayTitle = resultCounter + ". " + originalTitle + origin + source + " (" + (bestScore.rate * 100).toFixed(0) + " %)";
                 
                 filtered.push({ 
                     item: { name: displayTitle, abc: abc }, 
