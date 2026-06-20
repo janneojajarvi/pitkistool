@@ -669,19 +669,22 @@ document.getElementById('printBtn').onclick = function() {
         }
     }
     
-    // 3. Vaihdetaan otsikko kappaleen nimeksi
+    // 3. Vaihdetaan otsikko kappaleen nimeksi HETI
     document.title = songName;
     
-    // 4. Kuunnellaan, milloin tulostusikkuna sulkeutuu, ja palautetaan otsikko vasta silloin
+    // 4. Kuunnellaan, milloin tulostusikkuna sulkeutuu, ja palautetaan otsikko
     window.addEventListener("afterprint", function restoreTitle() {
         document.title = originalTitle;
-        // Poistetaan kuuntelija, jotta se ei kerry muistiin useilla tulostuskerroilla
         window.removeEventListener("afterprint", restoreTitle);
     });
     
-    // 5. Avataan tulostusikkuna
-    window.print();
+    // 5. UUSI KORJAUS: Odotetaan 150 millisekuntia ennen tulostusikkunan avaamista.
+    // Tämä antaa selaimelle aikaa rekisteröidä uusi otsikko PDF-tallennusta varten.
+    setTimeout(function() {
+        window.print();
+    }, 150);
 };
+
 
 
 
