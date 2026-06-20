@@ -287,6 +287,16 @@ if (targetVal === 2) penalty -= 0.05; // suosii D-sävellajeja
 
 function processAbc() {
 var raw = abcInput.value;
+
+// --- UUSI LISÄYS: Päivitetään sivun otsikko HETI kun nuotit muuttuvat ---
+    var songName = "Pitkahuilukappale"; 
+    var titleMatch = raw.match(/^T:\s*(.*)/m);
+    if (titleMatch && titleMatch[1].trim() !== "") {
+        songName = titleMatch[1].trim().replace(/[\/\\:\*\?"<>\|]/g, "_");
+    }
+    document.title = songName;
+    // -----------------------
+	
 var baseShift = 2; // Kiinteä D-vire
 
 if (octaveDisplay) octaveDisplay.innerText = window.currentOctave;  
@@ -655,35 +665,11 @@ smartSearch(true);
 };
 
 document.getElementById('printBtn').onclick = function() {
-    // 1. Otetaan talteen alkuperäinen otsikko
-    var originalTitle = document.title;
-    
-    // 2. Haetaan kappaleen nimi
-    var abcInput = document.getElementById('abcInput');
-    var songName = "Pitkahuilukappale"; 
-    
-    if (abcInput) {
-        var titleMatch = abcInput.value.match(/^T:\s*(.*)/m);
-        if (titleMatch && titleMatch[1].trim() !== "") {
-            songName = titleMatch[1].trim().replace(/[\/\\:\*\?"<>\|]/g, "_");
-        }
-    }
-    
-    // 3. Vaihdetaan otsikko kappaleen nimeksi HETI
-    document.title = songName;
-    
-    // 4. Kuunnellaan, milloin tulostusikkuna sulkeutuu, ja palautetaan otsikko
-    window.addEventListener("afterprint", function restoreTitle() {
-        document.title = originalTitle;
-        window.removeEventListener("afterprint", restoreTitle);
-    });
-    
-    // 5. UUSI KORJAUS: Odotetaan 150 millisekuntia ennen tulostusikkunan avaamista.
-    // Tämä antaa selaimelle aikaa rekisteröidä uusi otsikko PDF-tallennusta varten.
-    setTimeout(function() {
-        window.print();
-    }, 150);
+    // Sivun otsikko on jo päivitetty processAbc() -funktiossa, 
+    // joten voimme vain kutsua tulostusta suoraan.
+    window.print();
 };
+
 
 
 
