@@ -655,7 +655,31 @@ smartSearch(true);
 };
 
 document.getElementById('printBtn').onclick = function() {
+    // Otetaan sivun alkuperäinen otsikko talteen
+    var originalTitle = document.title;
+    
+    // Haetaan kappaleen nimi ABC-syötteestä (rivi joka alkaa "T:")
+    var abcInput = document.getElementById('abcInput');
+    var songName = "Kappale"; // Oletusnimi, jos T-riviä ei löydy
+    
+    if (abcInput) {
+        var titleMatch = abcInput.value.match(/^T:\s*(.*)/m);
+        if (titleMatch && titleMatch[1].trim() !== "") {
+            songName = titleMatch[1].trim();
+        }
+    }
+    
+    // Asetetaan kappaleen nimi väliaikaisesti sivun otsikoksi
+    document.title = songName;
+    
+    // Avataan selaimen tulostusikkuna
     window.print();
+    
+    // Palautetaan alkuperäinen otsikko pienen viiveen jälkeen,
+    // jotta selain ehtii lukea sen tulostusikkunaan
+    setTimeout(function() {
+        document.title = originalTitle;
+    }, 100);
 };
 
 // Lisää tämä window.onloadin sisään:
