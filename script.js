@@ -655,34 +655,34 @@ smartSearch(true);
 };
 
 document.getElementById('printBtn').onclick = function() {
-    // 1. Otetaan talteen sivun alkuperäinen otsikko (esim. "Pitkähuilutyökalu")
+    // 1. Otetaan talteen alkuperäinen otsikko
     var originalTitle = document.title;
     
-    // 2. Haetaan tekstikenttä ja asetetaan oletusnimi
+    // 2. Haetaan kappaleen nimi
     var abcInput = document.getElementById('abcInput');
-    var songName = "Pitkahuitu_kappale"; // Varmuuskopio, jos nimeä ei löydy
+    var songName = "Pitkahuilukappale"; 
     
     if (abcInput) {
-        // Esitellään säännöllinen lauseke, joka etsii rivin, joka alkaa "T:"
         var titleMatch = abcInput.value.match(/^T:\s*(.*)/m);
         if (titleMatch && titleMatch[1].trim() !== "") {
-            // Puhdistetaan nimi varmuuden vuoksi kielletyistä tiedostomerkeistä (\ / : * ? " < > |)
             songName = titleMatch[1].trim().replace(/[\/\\:\*\?"<>\|]/g, "_");
         }
     }
     
-    // 3. Vaihdetaan koko sivun otsikko kappaleen nimeksi
+    // 3. Vaihdetaan otsikko kappaleen nimeksi
     document.title = songName;
     
-    // 4. Avataan selaimen oma tulostus/PDF-tallennusikkuna
-    window.print();
-    
-    // 5. Palautetaan alkuperäinen otsikko selaimen välilehdelle pienen viiveen jälkeen,
-    //    jotta selain ehtii ensin lukea uuden otsikon PDF-ikkunaan.
-    setTimeout(function() {
+    // 4. Kuunnellaan, milloin tulostusikkuna sulkeutuu, ja palautetaan otsikko vasta silloin
+    window.addEventListener("afterprint", function restoreTitle() {
         document.title = originalTitle;
-    }, 200);
+        // Poistetaan kuuntelija, jotta se ei kerry muistiin useilla tulostuskerroilla
+        window.removeEventListener("afterprint", restoreTitle);
+    });
+    
+    // 5. Avataan tulostusikkuna
+    window.print();
 };
+
 
 
 // Lisää tämä window.onloadin sisään:
