@@ -189,6 +189,31 @@ function getKeyAccidentals(key, mode) {
     return accidentals;
 }
 
+// --- UUSI APUFUNKTIO: Alkuperäisen sävellajin laskeminen pitkähuilulle ilman transponointia ---
+function getOriginalHarpKey(abcText, currentTranspose) {
+    var semitones = {'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11};
+    var notes = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+
+    // Etsitään kappaleen alkuperäinen sävellaji K:-riviltä
+    var keyMatch = abcText.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
+    if (!keyMatch) return null;
+
+    var startNote = keyMatch[1];
+    var startVal = semitones[startNote.toUpperCase()] || 0;
+    
+    // Jos transponointia on tehty, lasketaan mikä sävellaji oli ennen transponointia
+    var originalVal = ((startVal - (currentTranspose || 0)) % 12 + 12) % 12;
+    var originalKeyName = notes[originalVal];
+
+    // Määritetään millä pitkähuilulla alkuperäinen sävellaji olisi soitettavissa suoraan.
+    // (Muistisääntö: C, D, E, F ja G vaativat alemman oktaavin huilun).
+    var lowerOctaveNotes = ['C', 'D', 'E', 'F', 'G'];
+    var fluteOctaveText = lowerOctaveNotes.includes(originalKeyName) ? " (matala oktaavi)" : "";
+
+    return originalKeyName + "-pitkähuilu" + fluteOctaveText;
+}
+
+
 function getTargetTranspositions(mode) {
     var targets = [];
     mode = mode.toLowerCase();
