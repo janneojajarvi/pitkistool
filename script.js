@@ -445,6 +445,17 @@ if (!finalAbc.includes("Q:")) {
 }
 
 
+    // --- LISÄYS TÄHÄN: Päivitetään alkuperäisen sävellajin näyttö ---
+    var originalKeyDisplay = document.getElementById('originalKeyDisplay');
+    if (originalKeyDisplay) {
+        var harpInfo = getOriginalHarpKey(raw, window.currentTranspose);
+        if (harpInfo) {
+            originalKeyDisplay.innerText = "Alkuperäinen sävellaji vaatisi: " + harpInfo;
+        } else {
+            originalKeyDisplay.innerText = "";
+        }
+    }
+    // -------------------------------------------------------------
 
 
 
