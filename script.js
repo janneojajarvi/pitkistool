@@ -434,15 +434,19 @@ if (!finalAbc.includes("Q:")) {
 
 
     // --- LISÄYS TÄHÄN: Päivitetään alkuperäisen sävellajin näyttö ---
-    var originalKeyDisplay = document.getElementById('originalKeyDisplay');
+        var originalKeyDisplay = document.getElementById('originalKeyDisplay');
     if (originalKeyDisplay) {
-        var harpInfo = getOriginalHarpKey(raw, window.currentTranspose);
-        if (harpInfo) {
-            originalKeyDisplay.innerText = "Alkuperäinen sävellaji vaatisi: " + harpInfo;
+        var harpKey = getOriginalHarpKey();
+        var trans = window.currentTranspose || 0;
+        
+        if (trans !== 0) {
+            var transStr = trans > 0 ? "+" + trans : trans;
+            originalKeyDisplay.innerText = `Alkuperäinen sävellaji: vaatisi ilman transponointia ${harpKey}-pitkähuilun (transponoitu ${transStr} puoliaskelta)`;
         } else {
-            originalKeyDisplay.innerText = "";
+            originalKeyDisplay.innerText = "Alkuperäinen sävellaji: D-pitkähuilu (ei transponointia)";
         }
     }
+
     // -------------------------------------------------------------
 
 
