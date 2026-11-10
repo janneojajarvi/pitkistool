@@ -635,17 +635,17 @@ if (btnBtoA) {
     };
 }
 
-// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ilman oktaavimerkkejä)
+// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan B, eli iso B ilman oktaavimerkkejä)
 const btnBtoD = document.getElementById('fixBtoD');
 if (btnBtoD) {
     btnBtoD.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Tunnistaa tarkasti vain pienen 'b':n ilman heittomerkkejä (keskimmäinen nuottiviiva)
+            // Ehto: Tunnistaa tarkasti ison 'B':n ilman oktaavimerkkejä (keskimmäinen nuottiviiva)
             function(step, pClass, note, octs) { 
-                return note === 'b' && octs === ''; 
+                return note === 'B' && octs === ''; 
             },
             
-            // Muutos: Nostetaan B tai Bb D:hen
+            // Muutos: Nostetaan B D:hen
             function(step, pClass, note, octs) { 
                 var p = ((step % 12) + 12) % 12;
                 return (p === 8) ? step + 4 : step + 3; // Bb -> D (+4), B -> D (+3)
