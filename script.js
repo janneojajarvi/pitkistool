@@ -620,17 +620,21 @@ function replaceTransposedNotesSmart(conditionFn, shiftFn) {
 
 // --- NAPPIEN KYTKENNÄT ---
 
-// 1. B ja Bb -> A
+// 1. B ja Bb -> A (Vain keskioktaavin B ja Bb transponoinnin jälkeen)
 const btnBtoA = document.getElementById('fixBtoA');
 if (btnBtoA) {
     btnBtoA.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Nuotti on Bb (pitchClass 8) tai B (pitchClass 9)
-            function(step, pClass) { return pClass === 8 || pClass === 9; },
+            // Ehto: Tarkastellaan transponoitua säveltä (step). 
+            // Rajataan vain keskioktaaviin (step 0–11), jotta ylemmät ja alemmat oktaavit jäävät rauhaan.
+            function(step, pClass) { 
+                return (pClass === 8 || pClass === 9) && step >= 0 && step < 12; 
+            },
             
-            // Muutos: Siirrä A:han (pitchClass 7). 
-            // Jos se on B (9), pudotetaan 2. Jos Bb (8), pudotetaan 1.
-            function(step, pClass) { return pClass === 9 ? step - 2 : step - 1; }
+            // Muutos: Siirrä A:han (pitchClass 7)
+            function(step, pClass) { 
+                return pClass === 9 ? step - 2 : step - 1; 
+            }
         );
     };
 }
