@@ -635,16 +635,19 @@ if (btnBtoA) {
     };
 }
 
-// 2. B ja Bb -> d
+// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ei ylempää b':tä)
 const btnBtoD = document.getElementById('fixBtoD');
 if (btnBtoD) {
     btnBtoD.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Nuotti on Bb (pitchClass 8) tai B (pitchClass 9)
-            function(step, pClass) { return pClass === 8 || pClass === 9; },
+            // Ehto: Nuotti on Bb tai B JA se on tarkalleen oikeassa oktaavissa (step, jossa b on keskitasolla)
+            function(step, pClass) {
+                // pClass 8 = Bb, 9 = B. Rajataan step-arvo niin, että ylempi b' (joka on 12 puoliaskelta ylempänä) jää pois.
+                // Pienen b:n transponoitu step-arvo on tässä kontekstissa tyypillisesti 11.
+                return (pClass === 8 || pClass === 9) && step === 11;
+            },
             
-            // Muutos: Nosta ylempään d:hen (+3 tai +4 puoliaskelta).
-            // D on seuraavassa oktaavissa nolla, mihin on B:stä matkaa 3.
+            // Muutos: Nosta d:hen
             function(step, pClass) { return pClass === 9 ? step + 3 : step + 4; }
         );
     };
