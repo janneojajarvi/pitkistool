@@ -635,20 +635,20 @@ if (btnBtoA) {
     };
 }
 
-// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan B, eli iso B ilman oktaavimerkkejä)
+// 2. B ja Bb -> d (Vain keskioktaavin B ja Bb transponoinnin jälkeen)
 const btnBtoD = document.getElementById('fixBtoD');
 if (btnBtoD) {
     btnBtoD.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Tunnistaa tarkasti ison 'B':n ilman oktaavimerkkejä (keskimmäinen nuottiviiva)
-            function(step, pClass, note, octs) { 
-                return note === 'B' && octs === ''; 
+            // Ehto: Tarkastellaan transponoitua säveltä (step). 
+            // Rajataan vain keskioktaaviin (step 0–11), jotta ylemmät oktaavit jäävät rauhaan.
+            function(step, pClass) { 
+                return (pClass === 8 || pClass === 9) && step >= 0 && step < 12; 
             },
             
-            // Muutos: Nostetaan B D:hen
-            function(step, pClass, note, octs) { 
-                var p = ((step % 12) + 12) % 12;
-                return (p === 8) ? step + 4 : step + 3; // Bb -> D (+4), B -> D (+3)
+            // Muutos: Nostetaan D:hen
+            function(step, pClass) { 
+                return pClass === 9 ? step + 3 : step + 4; // Bb -> D (+4), B -> D (+3)
             }
         );
     };
