@@ -16,7 +16,7 @@ var visualObj = null;
 var synthControl = null;
 var synth = null;      
 // D-pitkähuilun sallitut nuottiarvot (yläsävelsarja d1-d3)  
-// var allowedD = [0, 4, 6, 7, 9, 10, 11, 12, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 33, 34, 35, 36];  
+// var allowedD = [0, 4, 6, 7, 9, 10, 11, 12, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 28, 29, 31, 33, 34, 35, 36];   
 
 // 1. Datan lataus pyydetyistä lähteistä
 async function loadGistData() {
