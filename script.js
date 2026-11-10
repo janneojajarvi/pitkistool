@@ -635,19 +635,20 @@ if (btnBtoA) {
     };
 }
 
-// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ei ylempi b')
+// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ilman oktaavimerkkejä)
 const btnBtoD = document.getElementById('fixBtoD');
 if (btnBtoD) {
     btnBtoD.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Nuotti on Bb (8) tai B (9) SEKÄ kyseessä on pieni 'b' ilman ylimääräisiä oktaavimerkkejä
+            // Ehto: Tunnistaa tarkasti vain pienen 'b':n ilman heittomerkkejä (keskimmäinen nuottiviiva)
             function(step, pClass, note, octs) { 
-                return (pClass === 8 || pClass === 9) && note === 'b' && octs === ''; 
+                return note === 'b' && octs === ''; 
             },
             
-            // Muutos: Nosta d:hen
+            // Muutos: Nostetaan B tai Bb D:hen
             function(step, pClass, note, octs) { 
-                return pClass === 9 ? step + 3 : step + 4; 
+                var p = ((step % 12) + 12) % 12;
+                return (p === 8) ? step + 4 : step + 3; // Bb -> D (+4), B -> D (+3)
             }
         );
     };
