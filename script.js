@@ -581,10 +581,10 @@ function replaceTransposedNotesSmart(conditionFn, shiftFn) {
             var pitchClass = ((currentTransposedStep % 12) + 12) % 12;
 
             // 2. Osuuko nuotti asettamaamme ehtoon?
-            if (conditionFn(currentTransposedStep, pitchClass)) {
+           if (conditionFn(currentTransposedStep, pitchClass, note, octs)) {
                 
                 // 3. Lasketaan uusi haluttu korkeus
-                var newTransposedStep = shiftFn(currentTransposedStep, pitchClass);
+                var newTransposedStep = shiftFn(currentTransposedStep, pitchClass, note, octs);
                 
                 // 4. Luodaan uusi ABC-teksti (sama kaava kuin fixNotesBtn2:ssa!)
                 var newPitch = (newTransposedStep + 2) - (window.currentOctave * 12) - window.currentTranspose;
@@ -635,20 +635,20 @@ if (btnBtoA) {
     };
 }
 
-// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ei ylempää b':tä)
+// 2. B ja Bb -> d (Vain keskimmäisen nuottiviivan b/bb, ei ylempi b')
 const btnBtoD = document.getElementById('fixBtoD');
 if (btnBtoD) {
     btnBtoD.onclick = function() { 
         replaceTransposedNotesSmart(
-            // Ehto: Nuotti on Bb tai B JA se on tarkalleen oikeassa oktaavissa (step, jossa b on keskitasolla)
-            function(step, pClass) {
-                // pClass 8 = Bb, 9 = B. Rajataan step-arvo niin, että ylempi b' (joka on 12 puoliaskelta ylempänä) jää pois.
-                // Pienen b:n transponoitu step-arvo on tässä kontekstissa tyypillisesti 11.
-                return (pClass === 8 || pClass === 9) && step === 11;
+            // Ehto: Nuotti on Bb (8) tai B (9) SEKÄ kyseessä on pieni 'b' ilman ylimääräisiä oktaavimerkkejä
+            function(step, pClass, note, octs) { 
+                return (pClass === 8 || pClass === 9) && note === 'b' && octs === ''; 
             },
             
             // Muutos: Nosta d:hen
-            function(step, pClass) { return pClass === 9 ? step + 3 : step + 4; }
+            function(step, pClass, note, octs) { 
+                return pClass === 9 ? step + 3 : step + 4; 
+            }
         );
     };
 }
