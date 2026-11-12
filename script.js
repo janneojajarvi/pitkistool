@@ -334,16 +334,16 @@ var barAccidentals = {};
   
 var lines = raw.split('\n');  
 for (var i = 0; i < lines.length; i++) {  
-    var line = lines[i];  
-    
-    
-    if (line.trim().startsWith('w:')) continue;  
-      
-    if (/^[A-Z]:/.test(line) && !line.startsWith('|:')) {  
-    if (line.startsWith("Q:")) {
-    finalAbc += "Q:1/4=" + tempoSlider.value + "\n";
-    continue;
-}  
+     // POISTETAAN RIVIN LOPUN KENOVIIVA ( \ ) automaattisesti, ettei tabulatuurit/w-rivit mene rikki
+var line = lines[i].replace(/\\s*$/, '');
+
+if (line.trim().startsWith('w:')) continue;
+
+if (/^[A-Z]:/.test(line) && !line.startsWith('|:')) {
+ if (line.startsWith("Q:")) {
+finalAbc += "Q:1/4=" + tempoSlider.value + "\n";
+continue;
+}
         if (line.startsWith('K:')) {  
         
             // Tunnistetaan sävellaji (esim. D, G, Am, Dmaj)  
