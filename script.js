@@ -221,78 +221,49 @@ function getTargetTranspositions(mode) {
 }
 
 function autoTransposeFromKey(abc) {
-// console.log("----- AUTO TRANSPOSE DEBUG -----");
-var preferD = true;
-var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
-if (!keyMatch) return;
+    var keyMatch = abc.match(/^K:\s*([A-G][b#]?)\s*([a-zA-Z]*)/m);
+    if (!keyMatch) return;
 
-var semitones = {'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11};
+    var startNote = keyMatch[1].toUpperCase();
+    var mode = (keyMatch[2] || "").toLowerCase().trim();
 
-var startNote = keyMatch[1];
-var mode = (keyMatch[2] || "").toLowerCase().trim();
-var startVal = semitones[startNote] || 0;
+    // ERIKOISSÄÄNTÖ F-sävellajeille: Pakotetaan transponointi -5 tai -3 suoraan oikeaan alueeseen (+7 sijaan)
+    if (startNote === 'F') {
+        window.currentOctave = 0;
+        window.currentTranspose = (mode.includes("min") || mode.includes("dor") || mode.includes("m")) ? -3 : -5;
+        return;
+    }
 
-// console.log("Start key:", startNote, "mode:", mode);
-
-// KÄYTETÄÄN YHTEISTÄ FUNKTIOTA TÄSSÄ
+    var semitones = {'C':0,'C#':1,'Db':1,'D':2,'D#':3,'Eb':3,'E':4,'F':5,'F#':6,'Gb':6,'G':7,'G#':8,'Ab':8,'A':9,'A#':10,'Bb':10,'B':11};
+    var startVal = semitones[startNote] || 0;
     var targets = getTargetTranspositions(mode);
 
-// Asetetaan aluksi erittäin korkea virheaste
-var bestScore = 999;
+    var bestScore = 999;
     var bestOct = 0;
     var bestTrans = 0;
 
     targets.forEach(targetVal => {
-    // Kokeillaan kahta eri transponointisuuntaa jokaiselle kohteelle
-    // Esim. G (7) -> D (2) voi olla joko -5 tai +7
-    var transOptions = [
-        targetVal - startVal,          // Alaspäin/Suoraan (esim. -5)
-        (targetVal - startVal) + 12,   // Ylöspäin (esim. +7)
-        (targetVal - startVal) - 12    // Vielä alemmas (esim. -17)
-    ];
+        var transOptions = [
+            targetVal - startVal,          
+            (targetVal - startVal) + 12,   
+            (targetVal - startVal) - 12    
+        ];
 
-    transOptions.forEach(trans => {
-        [-1, 0, 1].forEach(oct => {
-            var rate = countErrorRate(abc, trans, oct);
-            
-            console.log(
-"Target:", targetVal,
-"trans:", trans,
-"oct:", oct,
-"rate:", rate
-);
-            
-         
-
-            // Lisätään pieni sakko (0.1) korkeammille oktaaveille ja kauemmas 
-            // meneville transponoinneille, jotta suositaan luonnollista aluetta.
-            var penalty = ((oct + 1) * 0.1) + (Math.abs(trans) * 0.01);
-
-if (targetVal === 2) penalty -= 0.05; // suosii D-sävellajeja
-            var currentScore = rate + penalty;
-            
-            console.log(
-"Target:", targetVal,
-"trans:", trans,
-"oct:", oct,
-"rate:", rate,
-"penalty:", penalty,
-"score:", currentScore
-);
-
-            if (currentScore < bestScore || (preferD && targetVal === 2 && rate === bestScore)) {
-                bestScore = currentScore;
-                bestOct = oct;
-                bestTrans = trans;
-            }
-            console.log("BEST RESULT:",
-"transpose:", bestTrans,
-"octave:", bestOct,
-"score:", bestScore
-);
+        transOptions.forEach(trans => {
+            [-1, 0, 1].forEach(oct => {
+                var rate = countErrorRate(abc, trans, oct);
+                var penalty = ((oct + 1) * 0.1) + (Math.abs(trans) * 0.01);
+                if (targetVal === 2) penalty -= 0.05; 
+                var currentScore = rate + penalty;
+                
+                if (currentScore < bestScore) {
+                    bestScore = currentScore;
+                    bestOct = oct;
+                    bestTrans = trans;
+                }
+            });
         });
     });
-});
 
     window.currentOctave = bestOct;
     window.currentTranspose = bestTrans;
