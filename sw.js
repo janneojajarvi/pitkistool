@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pitkistool-v9';
+const CACHE_NAME = 'pitkistool-v10';
 const ASSETS = [
   './',
   './index.html',
@@ -18,6 +18,8 @@ const ASSETS = [
   './swedish2.js',
   './korjaustsekki3.js',
   './tarkistusnuotit9.js',
+'./allklez.js',
+  
   
   // Esävelmät-sarja
   './esavelmat_hs1.js',
