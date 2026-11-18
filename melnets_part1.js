@@ -2944,34 +2944,6 @@ var melnets_part1 = [
     abc: "X:1\nT:Athole Highlanders, The\nM:6/8\nL:1/8\nR:March\nK:Amix\ne3 e>cA|e>cA B>cd|e3 e>cA|B>cd c>BA|e3 e>cA|e>cA\nB>cd|\ne<ae f>ed|c>dB A3:||:A>ce A>ce|A>df A>df|A>ce A>ce|\nB>cd c>BA|\nA>ce A>ce|A>df A>df|e<ae f>ed|c>dB A3:||:a>ee e>dc|\na>ee e>dc|\na>ee e>dc|B>cd c>BA|a>ee e>dc|a>ee e2 d|c\n<ae f>ed|c>dB A3:|\n|:c>Ac c>Ac|d>Bd d>Bd|c>Ac c>Ac|B>GB B>GB|c>Ac c>Ac|d>\nBd d>ef|\ne<ae f>ed|c>dB A3:||"
   },
   {
-    name: "Athole House",
-    abc: "X:1\nT:Athole House\nM:C\nK:G\ng|\\ndGBG dG e/d/c/B/| dGBG F(A2g)| dGBG dBgd| e/d/c/B/ dD EGG:|\nd|\\ng2 (b/a/g/f/ g)dBd| Gd e/d/c/B/ cAAd| g2b/a/g dgBd| egfa dg2d|\ngdbg fdc'b| bgdg fa2c'| bgdg ecAc| BGdD EGG|]"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nS:Toby A. Rider, Fiddle-L, 8/97\nS:Logan's -- 55\nO:Scottish\nE:7\nM:4/4\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3f\n{gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2\n{dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nS:Logan's -- 55\nE:7\nM:4/4\nZ:posted by Toby Rider 8/97\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3\nf\n{gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2\n{dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\n\"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nS:Logan's -- 55\nE:7\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3f {gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2 {dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nM:4/4l\nL:1/8\nS:Logan's -- 55\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3\nf\n{gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2\n{dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\n\"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nS:Logan's -- 55\nE:7\nM:4/4l\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3f {gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2 {dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\"
-  },
-  {
-    name: "Atholl Brose",
-    abc: "X:1\nT:Atholl Brose\nS:Toby A. Rider, Fiddle-L, 8/97\nS:Logan's -- 55\nO:Scottish\nE:7\nM:4/4\nK:D\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{gde}c{g}A3 {gAGAG}A3e {ag}a3f\n{gef}e3d|\\n{gde}c{g}A3 {gAGAG}A4 {gef}e3A {gAGAG}A2d2|{g}cde2 {g}G3{g}B {gf}g2G2\n{dc}d3B:|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a3d|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{gef}e3d {gf}g3d {gBd}BG3 {dc}d3{g}B|\\n{g}ce3 {gf}g3e {ag}a3e {gf}g3e|{g}ce3 {gf}g3e {ag}a4 {GdG}a2d2|\\n{g}c{GdG}e3 {gf}g2a2 {f}g3e {g}f3d|{g}efg2 {GdB}d3c {gBd}B{g}G3 {dc}d4||\"
-  },
-  {
     name: "Atholl Highlanders",
     abc: "X:1\nT:Atholl Highlanders, The\nR:March\nO:Scotland\nM:6/8\nL:1/8\nK:AMix\n|:e3 ecA|ecA Bcd|e3 ecA|Bcd cBA|!\ne3 ecA|ecA Bcd|eae fed|cdB A2A:|!\n|:Ace Ace|Adf Adf|Ace Ace|Bcd cBA|!\nAce Ace|Adf Adf|eae fed|cdB A2A:|!\n|:a2e edc|a2e edc|a2e edc|Bcd cBA|!\na2e edc|a2e edc|eae fed|cdB A2A:|!\n|:cAc cAc|dBd dBd|cAc cAc|BGB BGB|!\ncAc cAc|dBd dBd|eae fed|cdB A3:||!"
   },
@@ -4264,10 +4236,6 @@ var melnets_part1 = [
     abc: "X:1\nT:Beggarman's Song, The\nS:Digital Tradition, beggardh\nN:Tune: Johnny Dhu\nO:Irish\nZ:dt:beggardh\nM:6/8\nL:1/8\nQ:3/8=150\nW:I am a little beggarman, a begging I have been\nW:For three score years in this little isle of green\nW:I'm known along the Liffey from the Basin to the Zoo\nW:And everybody calls me by the name of Johnny Dhu\nW:\nW:Chorus:\nW:Of all the trades a going, sure the begging is the best\nW:For when a man is tired he can sit him down and rest\nW:He can beg for his dinner, he has nothing else to do\nW:But to slip around the corner with his old rigadoo\nW:\nW:I slept in a barn one night in Currabawn\nW:A shocking wet night it was, but I slept until the dawn\nW:There was holes in the roof and the raindrops coming thru\nW:And the rats and the cats were a playing peek a boo\nW:\nW:Who did I waken but the woman of the house\nW:With her white spotted apron and her calico blouse\nW:She began to frighten and I said boo\nW:Sure, don't be afraid at all, it's only Johnny Dhu\nW:\nW:I met a little girl while a walkin out one day\nW:Good morrow little flaxen haired girl, I did say\nW:Good morrow little beggarman and how do you do\nW:With your rags and your tags and your auld rigadoo\nW:\nW:I'll buy a pair of leggins and a collar and a tie\nW:And a nice young lady I'll go courting by and by\nW:I'll buy a pair of goggles and I'll color them with blue\nW:And an old fashioned lady I will make her too\nW:\nW:So all along the high road with my bag upon my back\nW:Over the fields with my bulging heavy sack\nW:With holes in my shoes and my toes a peeping thru\nW:Singing, skin a ma rink a doodle with my auld rigadoo\nW:\nW:O I must be going to bed for it's getting late at night\nW:The fire is all raked and now tis out of light\nW:For now you've heard the story of my auld rigadoo\nW:So good and God be with you, from auld Johnny Dhu\nK:Ab\ne|A2B A2G|A2B c2d|e2f e2c|d3 c2-d|\\ne3 A3|A2-B c2A|B2G E2F|_G3- G2F|\nE2A A2A|A2B c2d|e2f e2c|d3 c2-d|\\ne2a a2b|a2g e2d|c2A A2A|A3 e2-f|\n_g3 g2a|_g2f e2f|_g2f e2c|d3 c2-d|\\ne2A A2A|A2B c2A|B2G E2F|_G3 A2B|\nE3 A2A|A2B c2d|e2f e2c|d3 c2d|\\ne2a a2b|a2g e2d||"
   },
   {
-    name: "Beg�vningsmarsch fr�n Fun�sdalen",
-    abc: "X:1\nT:Beg�vningsmarsch fr�n Fun�sdalen\nT:efter Olof Halvarsson\nT:\nN:Efter Simon Svensson, �lvros 1923\nN:Cermonial wedding tune, to be played  when the bride and groom recieved\nN:the wedding gifts from the guest\nA:Fun�sdalen (v. H�rjedalen)\nB:Svenska L�tar J�mtland-H�rjedalen nr 714\nO:Sweden\nM:2/4\nL:1/16\nQ:1/4=80\nK:D\nA2|d3f a3f|(gf)gb a2gf|e2fg a2cd|(ef)ed c2A2|\\nd3f a3f|(gf)gb a2gf|e2fg a2cd|[1((3efe)d2 d2:|[2((3efe)d2 d4|:\\nf2d2 f2d2|(ef)ed c2A2|f2d2 f2d2|(ef)ed c2A2|\\nd3f a3f|(gf)gb a2gf|e2fg a2cd|((3efe)d2 d4:|\\nT:Andrast�mma\nA,2|F2Ad f3d|(ed)eg f2ed|c2de f2AB|(cd)cB (AG)FE|\\n(DF)Ad f3d|(ed)eg f2ed|c2de f2A2|[1G2F2 [F2A2]:|[2G2F2 [F4A4]|:\\nd2F2 A2F2|(cd)cA G2E2|d2F2 A2F2|(cd)cB (AG)FE|\\n(DF)Ad f3d|(ed)eg f2ed|c2de f2A2|G2F2 [F4A4]:|\\nT:Oktav\nA,2|D3F A3F|(GF)GB A2GF|E2FG A2CD|(EF)ED C2A,2|\\nD3F A3F|(GF)GB A2GF|E2FG A2CD|[1((3EFE)D2 D2:|[2((3EFE)D2 D4|:\\nF2D2 F2D2|(EF)ED C2A,2|F2D2 F2D2|(EF)ED C2A,2|\\nD3F A3F|(GF)GB A2GF|E2FG A2CD|((3EFE)D2 D4:|\"
-  },
-  {
     name: "Behind the bush in the garden (2)",
     abc: "X:1\nT:Behind the bush in the garden (2)\nR:Jig\nM:6/8\nK:G\nd/2c/2 | B2G B/2c/2dB | A2F A/2B/2cA | B2G B/2c/2dB | \\nd3g2 d/2c/2 | B2G B/2c/2dB | A2G FED | \\nG2c B/2c/2dB | G3 G2 :|\n|:e/2f/2 | gag fgf | e2d B3 | gag f2g | a3 d2 c/2B/2 | \\nc2a B2g | ABG FED | GAB cAF | G3 G2 :|"
   },
@@ -5038,7 +5006,7 @@ var melnets_part1 = [
   {
     name: "Blackberry Blossom",
     abc: "X:1\nT:Blackberry Blossom, The\nR:reel\nD:Mary Bergin: Feadoga Stain.\nD:Planxty: The Well below the Valley\nZ:id:hn-reel-117\nM:C|\nZ:posted by Bruce E. Baker 12/98\nK:G\nge|:dBAd BG~G2|dBBA B2ge|dBAd BG~G2|1 eaag abge:|2 eaag agef||\n~g3f gaba|~g3b agef|~g3f gbag|ea~a2 agef|\n~g3f gaba|~g3b a2ga|agaf gfed|eaag abge||"
-  },
+  }, 
   {
     name: "Blackberry Blossom",
     abc: "X:1\nT:Blackberry Blossom, The\nM:C|\nL:1/8\nR:reel\nK:G\nge|dBAc BAGA|~B3A B2ge|dBAc BAG2|eaag a2 ge|\\ndBAc BAGA|~B3A B2 ge|dBAc BAG2|eaag a2||*\nef|~g3f gaba|~g3b agef|~g3f ga~a2|ea~a2 agef\\n|~g3f gaba|~g3b a2 ga|bagf gfed|eaag a2||"
@@ -5654,10 +5622,6 @@ var melnets_part1 = [
   {
     name: "Bonaparte Crossing the Rhine",
     abc: "X:1\nT:Bonaparte Crossing the Rhine\nM:C\nK:G\nBc|d>edB d2ga|b>abd' g2gf|e>fge dBAG|A2AB A2Bc|\nd>edB d2ga|b>abd' g2gf|e>fge dBAB|G2G>A G2ga|\nb>abc' d'2d'd|e>def g3d|e>fge dBGB|A2A>B A2Bc|\nd>edB d2ga|b>abd' g2gf|e>fge dBAB|G2G>A G2|]"
-  },
-  {
-    name: "Bonaparte's Charge",
-    abc: "X:1\nT:Bonaparte's Charge\nR:March\nC:Unknown\nS:Nick Hallman\nZ:transcribed by Bo Bradham\nZ:This is the way I play it.\nZ:Try it in DDAD tuning!\nZ:Not sure about the number of repeats in the low part.\nZ:posted by Bo Bradham 2/99\nM:c|\nK:D\n|:A2|d2d2 e2de|f2df edBA|d2d2 e2de|fa2b a2A2|\\nd2d2 fafe|d2B2 BcdB|A2F2 DEFD|E2D2 D2:|\\n|:AB|A2F2 F2AB|A2D2 D2AB|A2F2 DEFD|E2D2 D2:|\\n|:AB|AA,F2 F2AB|AA,D2 D2AB|AA,F2 DEFD|EA,D2 D2:|\"
   },
   {
     name: "Bonaparte's March",

@@ -1736,10 +1736,6 @@ var melnets_part4 = [
     abc: "X:1\nT:Klezmer\nO:Israeli\nL:1/8\nM:2/4\nQ:1/4=120\nK:Cm\n|:c2 e2|g2  fe|c2 e2|d2 G2|c2 e2|g2 fe|bb aa|g4|\nf2 a2-|aa gf|c'2 c2-|ce dc|cG ce|gg fe|ff ed|c4:|\nc'g gg|ag gg|c'g gg|ag gg|c'2 b2|\\na2 g2|ff f/g/a/g/|f2 fg|\negeg|f3 f|cf cf|e2 e2|ba gf|ef ed|c4|\nK:Fm\n|:z CDC|F2 A2-|A c BA|F2 A2|G2 EC|F2 A2-|A cBA|ee dd|\nc4|B2 d2-|df ed|ff F2-|F BAG|FC FA|\\ncc BA|BB AG|F4:|\nfc cc|dc c2|fc cc|dc c2|f2 e2|d2c2|\\nBB B/c/d/c/|B3 c|AcAc|\nB3 B|FB FB|A4|ed cB|AB AG|F4|"
   },
   {
-    name: "Kl�vsj� brudmarsch",
-    abc: "X:1\nT:Kl�vsj� brudmarsch\nS:efter Alfred R�nnquist\nA:Kl�vsj� (s. J�mtland)\nO:Sweden\nM:4/4\nL:1/4\nK:D\n(f/g/)|a2 ab/a/|f2 de/f/|gg/g/ gb|g2 gf|\\ne2 ed|c>B AB/c/|de/g/ fe/c/|[1d3:|[2d3 A|:\\nAd dc/e/|dA/G/ FE/F/|D>G GA|B3 d|\\nce ef/e/|c>B AB/c/|de/g/ fe/c/|[1d3 A:|[2d3|]\\nT:Andrast�mma\n(d/e/)|f2 fg/f/|d2 Ac/d/|BB/B/ Bg|B2 ed|\\nc2 cB|A>G EG/A/|FG/A/ AG/E/|[1[F3A3]:|[2[F3A3] D|:\\nDF FE/G/|F>E DG/A/|B>G (D/B,/)(D/F/)|G3 A|\\nEc cd/c/|A>G EE|FG/A/ AG/E/|[1[F3A3] D:|[2[F3A3]|\"
-  },
-  {
     name: "KNDDEAR1- My Ain Kind Deary",
     abc: "X:1\nT:KNDDEAR1- My Ain Kind Deary\nS:Daniel Wright coll'n of c 1730 without title page\nQ:1/4=120\nL:1/8\nM:C\nK:G\nA|GEDEG2AB|G/A/B ~A3/2G/ AEEA|GEDEG2Gg|e2d3/2B/ dGG::g|\\ne/e/e ~d3/2B/ dGGB|A/A/A ~B3/2G/ AEEA|GEDEG2Gg|\\ne/e/e ~d3/2B/ dGGg|e/e/e gd eBgB|A/A/A B3/2G/ AEEA|\\nGEDEG2Gg|e/e/e ~d3/2B/ dGG:|]"
   },
@@ -7342,10 +7338,6 @@ var melnets_part4 = [
   {
     name: "Meeting of the Waters",
     abc: "X:1\nT:Meeting of the Waters\nC:Trad\nS:Fiddler's Fakebook\nI:speed 220\nM:4/4l\nK:A\nE2E2 | A4 A2c2 E4 A3G | F2A2 F2D2 E4 A2B2 | c2e2 E2e2 d2c2 B2A2 | c6dc B4 E2F2 |\nA4 A2c2 E4 A3G | F2A2 F2D2 E4 A3B | c2e2 d2c2 d2E2 G2B2 | A4 A3A A4||\ne3d | c4 e3d c2e2 c2E2 | F2A2 d2F2 E4 e3d | c2e2 E2e2 d2c2 B2A2 | c6 dc B4 e3d |\nc4 e3d c2e2 c2A2 | F2D2 d2F2 E4 A3B | c2e2 d2c2 d2E2 G2B2 | A4 A3A A4||M:4/4"
-  },
-  {
-    name: "Meggy's Foot",
-    abc: "X:1\nT:Meggy's Foot\nC:Trad\nS:Northumbrian Minstrelsy\nM:4/4\nK:G\ngfed B2 z2| Bcd2 A2 z2| gfed B2G2|Bcd2 G2 z2:: G2G2 (3Bcd z2| A2A2 (3Bcd z2|\\nG2G2 (3Bcd z2| Bcd2 G2 z2:: B2g2B2g2| B2g2 A2 z2|B2g2B2g2| B2g2 G2 z2::\\ngfed cBAG| BcdB ABcA|gfed cBAG| BcdB G2 z2:: Bdgd Bdgd|Bdgd Adgd|Bdgd Bdgd|\\nBdgd G2 z2::g2>d2 B2G2| B2d2 A2 z2|g2d2 B2G2| B2d2 G2 z2::\\nG2G2 (3Bcd z2| A2A2 (3Bcd z2|\\nG2G2 (3Bcd z2| Bcd2 G2 z2:: B2g2B2g2| B2g2 A2 z2|B2g2B2g2| B2g2 G2 z2::\"
   },
   {
     name: "Meggy's Foot",

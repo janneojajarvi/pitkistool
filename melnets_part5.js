@@ -580,10 +580,6 @@ var melnets_part5 = [
     abc: "X:1\nT:Mr & Mrs Mickey Mouse\nM:4/4\nL:1/8\nK:G\nBc|d2 B2 c2 e2|d2 B4 Bc|d2 B2 c2 e2|d2 B4 Bc|\nd2 B2 G2 D2|c2 A2 F2 A2|G2 G2 GABA|1 G6:|2 G8||\nE2 E2 F2 F2|G2 G4 Bc|d2 d2 c2 B2|A4 A2 A2|\nB2 B2 c2 c2|Bc d2 d2 c2|B2 A4 Bc|d2 B2 c2 e2|\nd2 B4 Bc|d2 B2 c2 e2|d2 B4 Bc|\nd2 B2 G2 D2|c2 A2 F2 A2|G2 G2 GABA|G8||"
   },
   {
-    name: "Mr and Mrs A. Ross",
-    abc: "X:1\nT:Mr and Mrs A. Ross\nR:Pipe march\nO:Scotland\nM:6/8\nC:John MacGregor\nK:D\nA/d/|\\nf2 f>dd|c>BB B>ef|g3 g>ee|c<ec B>AA|\\nf3 f>dd|c>BB B>ef|g>ec A<aa|{c}d3 d2:|\n|:f/g/|\\na3 f2d|c>BB B>ef|g3 e2d|c<ec B>AA|\\na3 f2d|c>BB B>ef|\ng>ec A<aa|{c}d3 d3::\\nf|\\nA>dd d3|d>cc c>BB|B>gg g2e|c<ec B>AA|\nA>dd d3|d>cc c>BB|g>ec A<aa|d3 d2::\\nf/g/|\\na>fa f>da|c>BB B>ef|\ng>eg g2e|c<ec B>AA|\\na>fa f>da|c>BB B>ef|g>ec A<aa|d3 d2:|\"
-  },
-  {
     name: "Mr Beveridge's Maggot",
     abc: "X:1\nT:Mr Beveridge's Maggot\nS:Playford\nM:3/2\nK:Gm\nP:A\ng4^f2=efg4|d2cBABc2B2G2|g4a2gab4|\\nf2edcde2d2B2:|\nP:B\nd2f4f2f4|c2e4e2e4|B2d4d2d2cB|ABc2B2AG^F2D2|\nd2a4a2a2d2|b2a2g2^f2g4|def2Bcd2ABc2|\\nB2G2G2^F2G2:|"
   },
@@ -2066,10 +2062,6 @@ var melnets_part5 = [
   {
     name: "Niguno Shel Yossi",
     abc: "X:1\nT:Niguno Shel Yossi\nL:1/8\nO:Israel\nI:choreographer R. Spivak, 1960\nM:2/4\nQ:1/4=120\nK:Am\nd| dc BA| cB A^G| BA ^GF| E2 z2\\n|: BB ^Gz| AA ^GF| EE F/2E/2D |\nE2 z2| BB ^Gz|  AA dc| BA ^GA| B2 z2 :|\\n|: A2 c2 | dc Bz|\n A2 c2 | dc Bz| dc BA| cB A^G|\\n[1  BA ^GA| B2 z2 :|[2  BA ^GF| E2 z2|"
-  },
-  {
-    name: "Nihavent Longa",
-    abc: "X:1\nT:Nihavent Longa\nO:Turkey\nM:4/4\nP:(ABCDE) AB Coda\nK:Dm\nDEFG ABA^G|A2F2 F2F2|DEFG ABA^G|A2F2 F2F2|\nDEFG AB^cd|efeB ^cBAG|A2^GA B2AB|^c2Bc d4:|\n|:efed Bdef|gfed ^cBAG|ABAG FGFE|D2^C2 D4 \"
   },
   {
     name: "Nina Wara",
@@ -4505,10 +4497,6 @@ var melnets_part5 = [
   },
   {
     name: "Oyster Girl",
-    abc: "X:1\nT:Oyster Girl\nM:6/8\nL:1/8\nR:jig\nZ:From Josephine Marsh in Kilfenora, 1996\nK:G\nded B2 G|A2 F D2 F|GFG BAB|d2 c A2 d|ded Bdg|f2 e c2e|\\nd2 B c BA|GAG G2 d:|Bcd Bcd|e2 c e2c|ABc ABc|d2 B d2 B|\\nded Bdg|f2 e c2 e|d2 B cBA|GAG G2 d:||\"
-  },
-  {
-    name: "Oyster Girl",
     abc: "X:1\nT:Oyster Girl\nR:Jig\nO:Ireland\nM:6/8\nK:G\nd|\\nded B2G|A2F D2D|G2G BGB|d2c ABc|\\nded B2g|f2e c2e|ded cAF|G3 G2 :|\n|:A|\\nBcd Bcd|e2c e2c|ABc ABc|d2B dBc|\\nded B2g|f2e c2e|ded cAF|G3 G2:|"
   },
   {
@@ -6916,10 +6904,6 @@ var melnets_part5 = [
     abc: "X:1\nT:Pols fr R\o{}ros (2)\nR:Pols\nO:Norway\nM:3/4\nQ:1/8=320\nK:DDor\nd2 d<^c A2|f2 fd e>f|\\n(3geg (3fdf e>^c|d2 {e}d<^c A2|\\nd2 d<^c A2|f2 fd e>f|\\n(3geg (3fdf e>^c|^cd d4:|\n|:\\nK:D\na2 fa fa|g2 eg eg|f2 (3dfd e>c|d2 df a2|\\na2 fa fa|g2 eg eg|f2 (3dfd e>c|c<d d4:|"
   },
   {
-    name: "Pols fr R\o{}ros",
-    abc: "X:1\nT:Pols fr R\o{}ros\nR:Pols\nO:Norway\nM:3/4\nK:D\nd>d- dc A2|f>f- fd e>f|\\n(3geg (3fdf e>c|(3def d<c A2|\\nd>d- dc A2|f>f- fd e>f|\n(3geg (3fdf e>c|(3def d4::\\na>a- af g>e|f>f- fd e>f|\n(3geg (3fdf e>c|(3def d<c A2|\\na>a- af g>e|f>f- fd e>f|\\n(3geg (3fdf e>c|(3def d4:|\"
-  },
-  {
     name: "Polsdans efter Lars Nerhagen",
     abc: "X:1\nT:Polsdans efter Lars Nerhagen\nS:(E �verg\aa{}rd nr 836)\nN:Elverum Pols\nR:Pols\nQ:160\nM:3/4\nL:1/8\nO:Norway\nA:�sterdal\nK:D\nFG EF D2 | fg ef df | \\n(3.a.f.a (3.g.e.g f>c | (3.d.e.f (c<d) Bd |\\nc2 {^G}[A4A4] | FG EF D2 |\nfg ef df | (3.a.f.a (3.g.e.g f>c | (3.d.e.f d4 ::\\nA2 (c<d) ((3fgf) | eg {ga}(gf) d>f | \\n(3.a.f.a (3.g.e.g f>c |\n(3.d.e.f (c<d) Bd | c2 {^G}[A4A4] | \\nA2 (c<d) ((3fgf) | eg {ga}(gf) d>f | \\n(3.a.f.a (3.g.e.g f>c | (3.d.e.f d4 :|"
   },
@@ -7220,20 +7204,12 @@ var melnets_part5 = [
     abc: "X:1\nT:Polska i A efter John-Erik Mattson, R�tan\nA:Digerberget, S. J�mtland\nO:Sweden\nZ:Lennart Sohlman, �lta, Sweden\nM:3/4\nL:1/8\nQ:150\nK:A\nA>c e3 e|(3fgf e3 (E|G)>A Bc de|(3f(gf) (3e(fe) (c2|\\nA>)c e3 e|(3fgf e3 (E|A)>c de fg|a2 a4::\\nvd2 (f>d) fa|(ab/a/) .g.e c2|(3c(dc) BE GB|(3B(cB) A>c e>>ue|\\nvd2 (f>d) fa|(ab/a/) .g.e c2|(3c(dc) BE GB|((3BcB) A4:|\\nT:Underst�mma\\n|:E>A c3 c|(3dBd c3 (A|B>)E GA Bc|(3d(ed) (3c(dc) A2|\\nE>A c3 c|(3dBd c3 (c|A>)E FA dB|[c2e2][c4e4]::\\n(DF) (A>F) Af|(fg/f/) ec A2|(3A(BA) GB BE|(3B(AG) E>A (3c(BA)|\\n(DF) (A>F) Af|(fg/f/) ec A2|(3A(BA) GB BE|((3BAB) [E4c4]:|"
   },
   {
-    name: "Polska i A efter John-Erik Mattson",
-    abc: "X:1\nT:Polska i A efter John-Erik Mattson\nR:Sydj�mtsk polska\nN:Efter v�rml�nningen Ferm, Handsj�byn\nA:Digerberget, S. J�mtland\nO:Sweden\nZ:Lennart Sohlman, �lta, Sweden\nM:3/4\nL:1/8\nQ:144\nK:A\nA,>A, (3.C.A,.C E>(E|A>)A (3.c.A.c e>(e|f>)e d>c B>B|e>d (3.c.e.c A2|\nA,>A, (3.C.A,.C E>(E|A>)A (3.c.A.c e>(e|f>)e d>c B>A|(GB) A4:|\n|:a>(a f>)(f d>)d|c>e ae cA|Bc dE GB|A>A (3.c.A.c e2|\\na>(a f>)(f d>)d|c>e ae cA|Bc dE GB|A2 A4:|\\nT:Andrast�mma\nE2 A,2 C2|A,2 (3.C.A,.C E>(A|d>)c B>A G>E|c>B (3.A.c.A E2|\\nA2 E2 C2|A,2 (3.C.A,.C E2|D2 E2 G>E|(B,D) [C4E4]::\\nD>F [F2A2][F2A2]|E>A [c2e2] [c2e2]|E2 G2 BG|E>C A,2 [C2E2]|\\nf>(f d>)(d A>)A|E>A cA EC|B,E D2 [B,2D2]|A,2 [C4E4]:|\"
-  },
-  {
     name: "Polska i A efter Matts Ersson",
     abc: "X:1\nT:Polska i A efter Matts Ersson\nR:Polska\nQ:150\nM:3/4\nL:1/8\nS:Uppt. efter John-Erik Mattsson\nA:Digerberget, S.J�mtland\nK:A\nA>c e3 e | (3fgf e3 E |\\nGA Bc de | (3f(gf) (3e(fe) c2 |\\nA>c e3e | (3fgf e3 E |\nA>c de fg|a2 a4::\\nvd2 (f>d) fa | (ab/a/) .g.e c2 |\n(3c(dc) BE GB | (3B(cB) A>c e>>ue |\\nvd2 (f>d) fa | (ab/a/) .g.e c2 |\\n(3c(dc) BE GB | ((3BcB) A4:|"
   },
   {
     name: "Polska i Am efter Anders Eriksson Moberg",
     abc: "X:1\nT:Polska i Am efter Anders Eriksson Moberg, �lvros\nS:E� nr 647\nA:�lvros, H�rjedalen\nB:Einar �vergaard nr 647\nO:Anders Eriksson Moberg\nM:3/4\nL:1/16\nQ:1/4=120\nK:Am\n(AB)A^G A2E2 E3B|(cd)cB c2E2 E3c|c2Bc d2cd e2c2|B2A^G A2E2 C2A,2|\\n(AB)A^G A2E2 E3B|(cd)cB c2E2 E3c|c2Bc d2cd e2c2|{Bc}B2A^G A6z2::\\n{g}a2ba g2ag f2ed|g2ag f2ed e2c2|a2ba g2ag f2ed|g2ag f2ed e2c2|\\n(AB)A^G A2B2 c2d2|{e}d2cd (d2e2) e4-|e2a2 g2ag f2ed|g2ag f2ed e2c2|\\nc2a2 g2ag f2ed|g2ag f2ed e2c2|(AB)A^G A2c2 e2c2|B2A^G A8:|\\nT:Andrast�mma\nA,3B, C4 A,4|(AB)A^G A2E2 C3E|A2^GA B2AB c2e2|d2cB c2A2 E2C2|\\nA,3B, C4 A,4|E3D C4 A,4|E4 D4 C2E2|D2CB, [C8E8]::\\n{e}f2gf e2fe d2cB|e2fe d2cB c2G2|f2gf e2fe d2cB|e2fe d2cB c2G2|\\nA,3B, C2E2 A2B2|{c}B2AB (B2A2) [^G4(B4]|[^G2)B2]f2 e2fe d2cB|\\ne2fe d2cB c2G2|G2f2 e2fe d2cB|e2fe d2cB c2A2|(cd)cB c2A2 E2CE|\\nD2CB, [C8E8]:|"
-  },
-  {
-    name: "Polska i C efter Jonk Jonas",
-    abc: "X:1\nT:Polska i C efter Jonk Jonas, �verhogdal\nR:Polska i Haver�stil (kringpolska)\nS:E� 588\nA:�verhogdal, H�rjedalen\nB:E �verg�rd nr 588\nO:Sweden\nM:3/4\nL:1/8\nQ:150\nK:C\nG2 c2 df|eg (3f(ed) ce|(3g(ag) (3f(ed) cc|d2 G4|\\nG2 c2 df|eg (3f(ed) ce|(3g(ag) (3f(ed) cc|{Bc}(3.B.A.B [E4c4]::\\nGa (ag) (gf)|{fg}f(e d)(e f)g|(3a(fa) (3g(eg) (3f(ed)|f(e c)a (ag)|(3g(e\ng) (3f(ed) cc|\\n{Bc}(.B.A.B [E4c4]:|\\nT:Oktavst�mma\nG,2 C2 DF|EG (3F(ED) CE|(3G(AG) (3F(ED) CC|D2 G,4|\\nG,2 C2 DF|EG (3F(ED) CE|(3G(AG) (3F(ED) CC|{B,C}(3.B,.A,.B, [C4E4]::\\nG,A (AG) (GF)|F(E D)(E F)G|(3A(FA) (3G(EG) (3F(ED)|F(E C)A (AG)|\\n(3G(EG) (3F(ED) CC|{B,C}(.B,.A,.B, [C4E4]:|\"
   },
   {
     name: "Polska i C efter Jonk Jonas",
@@ -7604,14 +7580,6 @@ var melnets_part5 = [
     abc: "X:1\nT:Preston Tally-Ho !\nS:Chris Dewhurst (1983), via PR\nM:4/4\nL:1/4\nK:G\nGA ^A|BG AG|BG AG|FE FE-|E(3E/2F/2E/2 ^DE|\nBA BA|BA G/2E3/2|A2 -A2|AG A^A|BG AG|BG AG|\nFE FE-|E(3E/2F/2E/2 ^DE|B3/2A/2 GE|B2 B2|G4-|GG F=F||\nEG GG|AG2A|BB AG-|GG AB|^c3/2c/2 BA|Bd ^cA|\\nd2 -d2|dD EG|\nBG AG|BG AG|FE FE-|E(3E/2F/2E/2 ^DE|B3/2A/2 GE|B2 B2|G4-|G||"
   },
   {
-    name: "Preston's",
-    abc: "X:1\nT:Preston's\nM:4/4\nL:1/8\nS:Gerry O'Donnell, Belfast (flute)\nR:Reel\nD:Session tape - Milltown Malbay 1985\nZ:Bernie Stocks\nK:G\nGBBA G3G | FAAG FAD2 | GBBA GBdg |1 fgaf gedB :|2 fgaf g4 |:\\ngbba fgab | agef gede |1 gbba fgab | agef g4 :|2 gbfa efga | gfef gedB ||\"
-  },
-  {
-    name: "Preston's",
-    abc: "X:1\nT:Preston's\nM:4/4\nL:1/8\nS:Gerry O'Donnell, Belfast (flute)\nR:Reel\nD:Session tape - Milltown Malbay 1985\nZ:Bernie Stocks\nK:G\nGBBA G3G | FAAG FAD2 | GBBA GBdg |1 fgaf gedB :|2 fgaf g4 |:\\ngbba fgab | agef gede |1 gbba fgab | agef g4 :|2 gbfa efga | gfef gedB ||\"
-  },
-  {
     name: "Pretty Girls of Mayo",
     abc: "X:1\nT:Pretty Girls of Mayo, The\nR:reel\nZ:id:hn-reel-319\nM:C|\nK:G\nDG~G2 A2de|fd~d2 fdcA|DG~G2 A2de|1 fdcA BGAF:|2 fdcA AGBd||\ng2ge fdde|fdge fdde|~g3e fdde|fdcA AG~G2|\ng2ge fdde|fdge fdd^c|defg abag|fdcA BGAF||"
   },
@@ -7946,10 +7914,6 @@ var melnets_part5 = [
   {
     name: "Prussian's Hornpipe",
     abc: "X:1\nT:Prussian's Hornpipe,The.WM012\nM:4/4\nL:1/8\nQ:180\nS:Wm.Mittell,1799\nR:Hornpipe\nO:England\nA:Kent\nN:D\nZ:C.G.P\nK:F\nC2|FGAB cAfd|cBAGF4|]"
-  },
-  {
-    name: "Pr�stpolska efter Lillbacksgubben (Galven",
-    abc: "X:1\nT:Pr�stpolska efter Lillbacksgubben (Galven, Alfta)\nA:Galven, Alfta, H�lsingland\nB:cf. Svenska L�tar H�lsingland nr 604\nD:Emil Olsson, Hugo Westling: Spelmansl�tar fr�n H�lsingland (Sonet LP)\nO:Sweden\nZ:Lennart Sohlman, �lta, Sweden\nM:3/4\nL:1/8\nQ:1/4=110\nK:Gm\nG>^F D2 BA|G>(B d2) g2-|g^f/g/ a>g =fe|d>c B>A G^F|\\nG>^F D2 BA|G2 e2 c2|BA/B/ d2 D>G|(^F/G/)A/F/ G3 D::\\nG>(B d>)(^f g)a|b2 b>a ag|g^f/g/ a>g =fe|d>c B>A G^F|\\nG>(B d>)(^f g)a|b2 b>a ag|g^f/g/ a>g =fe|d>c B>A B2|\\nB>[Fd] [Fd][Fd] [Fd][Fd]|d>[Ec] [Ec][Ec] [Ec][Ec]|\\nc>[Fd] [Fd][Fd] [Fd][Fd]|d>[Ec] [Ec][Ec] [Ec][Ec]|\\nc>d d2 B2|A>c BA G^F|G>g g2 B2|A>c B>A G^F|\\nG>c c2 A2|c>d e2 c2|BA/B/ d2 D>G|(^F/G/)A/F/ G4:|\"
   },
   {
     name: "Pterodactyl Two-Step/Drowsy Dragon",

@@ -5172,10 +5172,6 @@ var melnets_part7 = [
     abc: "X:1\nT:The Tinker Cart\nR:reel\nC:Ed Reavy\nZ:transcribed by Bil 3/00\nM:2/2\nL:1/8\nZ:Joe Reavy\nN:This is Ed's setting of an old tune\nN:that is seldom heard today. It's one of those\nN:lovely slow reels that has the right\nN:touch in the most important spots. Ed's \nN:of it in this setting makes it atruly superb fiddle tune.\nK:G\nD|GABd cAFG|AGGF GABc|(3dcB AG FGAc|BGAF GFED|\nGABd cAFB AGGF GBdg|fdcA FDEF|1AGGF GDEF:|2AGGF G2 Bd|\ngage fgfd|(3cBA Bc dcdf|gage fgfd|(3cBA dB c2 ef|\ngage fgfa|gfed ^cdfg|(3bag fd cAFG|AGGF G2 Bd||\ngage fgfd|(3cBA Bc dcdf|gage fgfd|(3cBA dB c2 ef|\ngage fgfa|gfed ^cdfg|(3bag fd cAFG|1AGGF GDEF||"
   },
   {
-    name: "the Tinker's Daughter",
-    abc: "X:1\nT:the Tinker's Daughter\nR:Reel\nO:Ireland\nM:4/4\nK:D\nB|\\nA2 FA DA FA|f2 fd ef dB|\\nA2 FA DA FA|Bd dA BA FB|\\nA2 FA DA FA|f2 fd ef de|\\nfa (3aaa bf af|de de fd d::\\ne|\\nfa (3aaa bf af|de fd e2 de|\\nf2 df e2 de|f2 df ed BA|\\nfa (3aaa bf af|de fd e2 de|\\nf2df e3e|dB AF D3:|\"
-  },
-  {
     name: "The Tinker's Reel",
     abc: "X:1\nT:The Tinker's Reel\nM:4/4\nL:1/8\nK:D\n|F2 EG FD DE|EG AG FD DE|F2 EG FD DE|FA Bc dF EG|\nF2 EG FD DE|FG AG FE DE|F2 EG FD DE|FABc d2 cd ||\n|:e4 ef ed|cd ef g2 fg|e4 ef ed|cA Bc d2 cd|\ne4 ef ed| cd ef g2 fg|af f2 ge e2|1 df ec d2 cd:|2 df ec e4||\nK:G\n|:[B4E4] [BE]A B,A|AB de fe dc|[B4E4] [BE]A B,A|AB AF E2 GA|\n[B4E4] [BE]A FA|AB de fe d^c|[B4E4] [BE]A FA|AB AF E4 :|\n|:(3Bcd ef g3 e|d2 (3BcB AFDA|(3Bcd ef ga gd|dBAF E2 ef|\ng4 gf e2|f4 fe d2|ABde fedB|dBAF E4 :|"
   },
@@ -6852,10 +6848,6 @@ var melnets_part7 = [
     abc: "X:1\nT:Traditional (North Highland)\nM:6/8\nL:1/8\nR:Jig\nK:D\nBcd dAd | dAd f2 d | c2 e ede | BBB c2 A | dAd dAd | ddd fed |B2  B c/2d/2ec | d3 A3 :|\n|:d2 d fga | BcB c2 B | ABA ABA | BcB c2 A | d2 d fga | BcB c2 A Bcd edc |\nd3 A3 :|\n|:agf gfe | fed c2 A | dBG Bcd | BeB c2 A | afa geg | fed c2 A | dfd edc |\nd3 A3 :||"
   },
   {
-    name: "Traditional (Skye dance)",
-    abc: "X:1\nT:Traditional (Skye dance)\nM:4/4\nL:1/8\nK:D\ne | AAeA c2 BA | BBBB d2 f2 | AAeA c2 BA | B2 BB dAA :|\n|:e | aeed c2 BA | AAeA c2 e2 | aeed c2 BA | B2 BB dA A :|\"
-  },
-  {
     name: "Traditional Gaelic Melody",
     abc: "X:1\nT:Traditional Gaelic Melody\nZ:Footnote: 19 April 1994\nM:4/4\nL:1/8\nQ:128\nK:G\n|:d3/2c/B3/2c/ B/G3/2G2|B3/2G/F3/2G/ FDD2|d3/2c/B3/2c/ B/G3/2G2|F3/2C/D/\n^F3/2 G4|\nW:Gm Dm Gm F D7 Gm\nd3/2c/B3/2c/ B/G3/2G2|B3/2G/F3/2G/ FDD2|d3/2c/B3/2c/ B/G3/2G2|F3/2C/D/^F\n3/2 G4|\nW:Gm Dm Gm Eb F D7 Gm\nG2G/F3/2 G2G2|F3/2D/C3/2D/ B,3/2C/DF|G2G3/2F/ G2G2|F3/2C/D/^F3/2 G4|\nW:Gm Dm F Bb Dm Gm Dm D7 Gm\nG2G3/2F/ G2G2|F3/2D/C3/2D/ B,3/2C/DF|G2G3/2F/ G2G2|F3/2C/D/^F3/2 G4:|G2G\n3/2F/ G2G2|^F3/2C/D/^F3/2 G4|\nW:Gm Eb Dm F Bb Dm Gm Dm D7 Gm Eb Cm A7 D7 Gm"
   },
@@ -7786,14 +7778,6 @@ var melnets_part7 = [
   {
     name: "Unknown",
     abc: "X:1\nT:Unknown\nM:12/8\nL:1/8\nQ:120\nH:Last of the Mohicans\nR:Double Jig\nK:A minor\n|: A,A,A, FED EDC DCA, | A,A,A, FED EDC DCA, | CCC EEE GEE EDE |\nCCC EEE GEE EDE | FFF FFF GFF FED | EEE EEE GEE EDC |\nDDD DDD FED EDC | A,A,A,FED EDC DCA, :|"
-  },
-  {
-    name: "unknown",
-    abc: "X:1\nT:unknown\nL:1/8\nM:9/8\nK:C\nV:1\nA2 B cAB GDE |\\nA2 B c[ce]d\nB2 E |\\nA2 B cAB GDE |\\nAGE DB,E A,2 A :|\nV:2\nL:1/8\nM:9/8\nK:C\n|:cED ECE D2 B |\\ncEG FEG -G2 B |\\nA3 G3 B3 |\\nc3 B3 A3 :|\nV:3\nL:1/8\nM:9/8\nK:C\n|:C,,3 ^X3 =X3 |\\n^X3 =X3 X3 |\"
-  },
-  {
-    name: "Unknown",
-    abc: "X:1\nT:Unknown\nL:1/8\nM:9/8\nK:C\nV:1\nA2 B cAB GDE |\\nA2 B c[ce]d\nB2 E |\\nA2 B cAB GDE |\\nAGE DB,E A,2 A :|\nV:2\nL:1/8\nM:9/8\nK:C\n|:cED ECE D2 B |\\ncEG FEG -G2 B |\\nA3 G3 B3 |\\nc3 B3 A3 :|\nV:3\nL:1/8\nM:9/8\nK:C\n|:C,,3 ^X3 =X3 |\\n^X3 =X3 X3 |\"
   },
   {
     name: "Unknown",

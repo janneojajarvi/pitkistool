@@ -553,10 +553,6 @@ var melnets_part3 = [
   },
   {
     name: "Gan Ainm",
-    abc: "X:1\nT:Gan Ainm\nM:4/4\nL:1/8\nS:Gerry O'Donnell, Belfast (flute)\nR:Reel\nD:Session tape - Milltown Malbay 1985\nK:D\nD2FD FAA2 | defd edAF | GE~E2 FEDF | EA,~A,2 DFEF | D2FD FAA2 | defd edAe |\\nfd~d2 gfed |1 fage d2AF :|2 fage d2fg |: afdf ~g3a | bagb afdf | g2ge cdef |\\ng2gb agfe | faeg fd~d2 | fa~a2 gfeg | fd~d2 gfed |1 fage d2fg :|2 fage d2AF ||\"
-  },
-  {
-    name: "Gan Ainm",
     abc: "X:1\nT:Gan Ainm\nM:4/4\nL:1/8\nR:Reel\nD:Session Tape - Belfast 1984 (with Andy Dickson and Ciaran Carson)\nZ:Bernie Stocks\nK:G\nA3G EGG2 | AGAB dedB | ABAG EGG2 | gedB BAA2 :: agef g4 |\\nABAG EGG2 |1 agef g3e | dBgB BAA2 :|2 AGAB d3e | gedB BAA2 ||"
   },
   {
@@ -1306,10 +1302,6 @@ var melnets_part3 = [
   {
     name: "Gan Ainm",
     abc: "X:1\nT:Gan Ainm\nM:4/4\nL:1/8\nS:John Kelly, Clare (fiddle)\nR:Reel\nD:Fiddle concert - Milltown Malbay 1983\nZ:Bernie Stocks\nK:D\nBEEF G3E | FDAD FDAD | BEEF G3A | Beed e4 :| gebe gebe | fdad fdad |\\ngebe gebe | fedf e4 | gebe gebe | fdad fdad | g4 f3d | Bdef gfed ||"
-  },
-  {
-    name: "Gan Ainm",
-    abc: "X:1\nT:Gan Ainm\nM:4/4\nL:1/8\nS:Gerry O'Donnell, Belfast (flute)\nR:Reel\nD:Session tape - Milltown Malbay 1985\nK:D\nD2FD FAA2 | defd edAF | GE~E2 FEDF | EA,~A,2 DFEF | D2FD FAA2 | defd edAe |\\nfd~d2 gfed |1 fage d2AF :|2 fage d2fg |: afdf ~g3a | bagb afdf | g2ge cdef |\\ng2gb agfe | faeg fd~d2 | fa~a2 gfeg | fd~d2 gfed |1 fage d2fg :|2 fage d2AF ||\"
   },
   {
     name: "Gan Ainm",
@@ -3053,10 +3045,6 @@ var melnets_part3 = [
   },
   {
     name: "Gravel Walk",
-    abc: "X:1\nT:Gravel Walk, The\nR:Reel\nM:C|\nK:ADor\nA2eA BAeA|A2eA BAGB|A2eA (3Bcd ef|gedc BAGB::\\nA2aA gAfA|A2eA BAGB|1 A2aA gAfa|gedc BAGB:|2 ABcd efga|gedc BAGB\\n|:cAAG ~A3B|cA~A2 dBGB|cAAG A2ef|gedc BAGB::\\nc2gc acgc|c2ec BAGB|c2gc acga|gedc BAGB|\\nc2gc acgc|c2dc BAGB|1 ABcd efga|gedc BAGB:|2 Aa~a2 agef|gedc BAGB||\"
-  },
-  {
-    name: "Gravel Walk",
     abc: "X:1\nT:Gravel Walk, The\nT:Gravel Walks, The\nR:reel\nD:Paddy Glackin: Ceol ar an bhFidil le Paddy Glackin.\nD:Matt Molloy: Stony Steps.\nZ:The last part is sometimes singled. See also Jenny's Chickens, #75\nZ:id:hn-reel-60\nM:C|\nK:Ador\nA2eA BAeA|A2eA BAGB|A2eA (3Bcd ef|gedc BAGB:|\n|:A2aA gAfA|A2eA BAGB|1 A2aA gAfa|gedc BAGB:|2 ABcd efga|gedc BAGB||\n|:cAAG ~A3B|cA~A2 dBGB|cAAG A2ef|gedc BAGB:|\n|:c2gc acgc|c2ec BAGB|c2gc acga|gedc BAGB|\nc2gc acgc|c2dc BAGB|1 ABcd efga|gedc BAGB:|2 Aa~a2 agef|gedc BAGB||\n\nA2eA BAeA|A2eA dBGB|A2eA (3Bcd ef|gfge dBGB:|\n|:A2aA gAfA|A2eA dBGB|1 A2aA gAfa|gedc BAGB:|2 ABcd efga|gedc BAGB||\n|:(3cBA BG ~A3B|cBAe dBGB|cAAG (3ABc (3def|gfge dBGB:|\n|:c2gc acgc|c2ge dBGB|c2gc acga|gedc BAGB|\nc2gc acgc|c2ge dBGB|1 ABcd efga|gedc BAGB:|2 Aa~a2 agef|gfge dBGB||"
   },
   {
@@ -3482,10 +3470,6 @@ var melnets_part3 = [
   {
     name: "Gyre And Gimble",
     abc: "X:1\nT:Gyre And Gimble\nS:via PR\nM:4/4\nL:1/4\nK:D\nA|dA FA|BG EG|FA d3/2e/2|f/2g/2f/2e/2 dA|dA FA|\\nBG EG|F3/2E/2 DC|D3:|\n|:F/2G/2|A3/2G/2 FG|Ad fA|Bd gf|e/2f/2e/2d/2 cF/2G/2|\nA3/2G/2 FG|Ad fA|Bg f/2e/2d/2c/2|d3:|\n|:c/2d/2|e3/2c/2 AA|f3/2d/2 AA|^ge fg|ag fe|dA FA|BG EG|\\nFA d3/2e/2|d3:|"
-  },
-  {
-    name: "G�ngl�t efter Svedin (Njurunda)",
-    abc: "X:1\nT:G�ngl�t efter Svedin (Njurunda)\nS:SvL Medelpad 216\nM:4/4\nL:1/8\nK:Dm\n(A|d3) (d e2) fg|{g}a4 f2 ed|e2 a2 (^ga)=bg|a2 z(a/e/) (d^c)=BA|\\nd3 d e2 fg|{g}a4 f2 ed|e2 a2 (^ga)=bg|{a^g}a6 z::\\ne|[A4f4] {g}f2 ed|{f}e4 e2 d^c|d2 e2 f2{ef}g2|a3 a (ab)ag|\\n[A4f4] {g}f2 ed|{d}e4 (gf)ef|d2 d2 (^cd)ec|d6 z:|\\nT:Andrast�mma\n(D|F3)(F A^c) de|{e}f4 d2 ^c=B|A2^c2=B2dB|[^c4e4](DE)GE|\\nF3(F A^c) de|{e}f4 d2 ^c=B|A2^c2=B2dB|[^c6e6]z::\\nA|d4{e}d2^c=B|{=B}^c4{d}c2AE|F2A2d2e2|f3f (fg)fe|\\nd4{e}d2^c=B|{=B}^c2Ac (ed)cd|A2A2(EF)GE|[F6A6]z:|\\nT:Oktavst�mma\n(A,|D3) (D E2) FG|{G}A4 F2 ED|E2 A2 (^GA)=BG|A2 z(A/E/) (D^C)=B,A,|\\nD3 D E2 FG|{G}A4 F2 ED|E2 A2 (^GA)=BG|A6 z::\\nE|[F4A4] {G}F2 ED|{F}E4 E2 D^C|D2 E2 F2{EF}G2|A3 A (AB)AG|\\n[F4A4] {G}F2 ED|{D}E4 (GF)EF|D2 D2 (^CD)EC|D6 z:|\"
   },
   {
     name: "G�ngl�t efter Vilhelm Hedlund",

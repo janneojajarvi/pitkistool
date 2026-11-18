@@ -564,10 +564,6 @@ var melnets_part6 = [
     abc: "X:1\nT:Rezijanka I\nC:Trad.\nM:2/4\nL:1/8\nQ:1/4=120\nE:10\nP:(DG)*L\nK:D\nP:D\nd>d\\n|:e>f f>g | e>d e>f | e>e d>c |1 d2 d>d :|2 d2-d3/2G/2 ||\\nK:G\nP:G\n|:A>B B>c | A>G A>B | A>A G>F |1 G2 G>G :|2 G>A d>d ||\\nK:D\nP:L\n|:e>f f>g | e>d e>f | e>e d>c |1 d2 d>d :|2 d>f d>d|*\n|:e>f f>g | e>d e>f | e>e d>c |1 d2 d>d :|2 d2 z2 | G4"
   },
   {
-    name: "Rezijanka II",
-    abc: "X:1\nT:Rezijanka II\nC:Trad.\nS:Slovenia\nZ:Aubrey Jaffer <jaffer@martigny.ai.mit.edu>\nM:2/4\nL:1/8\nQ:1/4=120\nE:10\nP:(DG)*L\nK:D\nP:D\nA>A\\n|:d2f2 | e>d c>c | e>e e2 | f>g e>c |1 d2 A>A :|2 d2 G>G ||\\nK:G\nP:G\n|:G2B2 | A>G F>F | A>A A2 | B>c A>F |1 G>B G>G :|2 G>B A>A ||\\nK:D\nP:L\n|:d2f2 | e>d c>c | e>e e2 | f>g e>c |1 d2 A>A :|2 d>f d>d |*\n|:d2f2 | e>d c>c | e>e e2 | f>g e>c |1 d2 A>A :|2 d2 z2 | G4\"
-  },
-  {
     name: "Rezvost'",
     abc: "X:1\nT:Rezvost'\nH:H. Tantsyur\nS:A. Humenyuk\nR:Polka\nQ:144\nM:2/4\nL:1/8\nA:village of Zyatkivtsi, Vinnyts'kiy\nK:C\naffd | cAAc | _BGGd | cAAc | \\naffd | cAAc | ddee | fffz :|\n|:eegg | g/2g/2g/2g/2 ge | \\ng/2g/2g/2g/2 ge | g/2g/2g/2g/2 ge | \\neegg | g/2g/2g/2g/2 ge | g/2g/2g/2g/2 gB | cecz :|"
   },
@@ -4312,10 +4308,6 @@ var melnets_part6 = [
     abc: "X:1\nT:Singing of the Travels\nS:Symondsbury\nM:4/4\nL:1/4\nK:G\nd3/2d/2 |ed dB|c2 d3/2c/2|cB AG|GF ED|G2 GA|B2 AG|\\nD4-|D2 d3/2d/2|\ned dB|c2 d3/2c/2|cB AG|d4-|d2 dc|Bd dd|d2 d2|G4-\\n|G3||"
   },
   {
-    name: "Single Reel in G",
-    abc: "X:1\nT:Single Reel in G\nM:4/4\nL:1/8\nR:reel\nZ:From Josephine Marsh at Kilfenora 1996\nK:G\nDGGF ~G2 BG|GABG ~AGEG|DGGF GABd|egdB AGEG|\\nDGGF ~G2 BG|GABG ~AGEG|DGGF GABd|egdB ~c2Bc||\\n~d2 gd edgd|degd BGBc|~d2 gd edef|gedB ~c2 Bc|\\n~d2 gd edgd|degd BGBd|~c2 cA ~B2 BA|GA (3Bcd gedB||\"
-  },
-  {
     name: "Singue. HSJJ.057",
     abc: "X:1\nT:Singue. HSJJ.057\nM:6/8\nL:1/8\nS:HSJ Jackson,Wyresdale,Lancs.1823\nR:March\nO:England\nA:Lancashire\nH:1823\nZ:Chris Partington.\nK:G\nG2GG2G|G3AGA|B2BB2B|B3cBc|d3Bcd|c3ABc|!Bdc BAG|FAG FED|G2GG2G|G3AGA|B2BB\n2B|B3cBc|d3Bcd|!c3ABc|Bed cBA|A3A3|\n|B6|dBc dcB|A6|cAB cBA|!B2dB2d|c2ec2e|def g2f|e6|ggg eee|fff ddd|!\nBBB ccc|d3def|ggg eee|fff ddd|BBB ccc|d3cBA|]"
   },
@@ -4544,10 +4536,6 @@ var melnets_part6 = [
     abc: "X:1\nT:Skr�ddare Polka\nC:Herman Axelsson, Sm\aa{}land\nM:2/4\nL:1/16\nK:C\necGc E2Gc|BAFA D2DB|BAFA D2DB|cGEE C2C2|\necGc E2Gc|BAFA D2DB|B2BA G2AB|1c2e2c4:|2 c2e2 c2EF||\n|:G2GF E2Gc|e2ed c2c2|B2dc B2BA|Gced c2c2|\nG2GF E2Gc|e2ed c2c2|d2fd B2e2|c2c2 c4:|"
   },
   {
-    name: "Skuckupolska",
-    abc: "X:1\nT:Skuckupolska\nA:Skucku, S. J�mtland\nO:Sweden\nM:3/4\nL:1/8\nQ:1/4=140\nK:Dm\nvD>E F2F2|(3F(GF) E2E2|D>^C D>F AF|(3D(FD) (3^C(EC) vA,2|\\nu(D>E) F2F2|(3F(GF) E2E2|(3F(GF) D>^C DF|(E^C) D4::\\n{A}va2 ((3aba) g>e|f2 ((3fgf) e>d|(A>^c d)e fe|(3g(ag) (3f(ed) (e2|\\na2) ((3aba) g>e|f2 ((3fgf) e>^c|A>G (3E(GE) (3D(FD)|(3^C(EC) D4:|\\nT:Andrast�mma\nvA,>^C D2D2|(3D(ED) ^C2C2|A>G F>A dA|(3F(GF) (3A(=B^c)A2|\\nu(A>G) A,2 D2|(3D(ED) A,2^C2|(3D(EF) A>G Ad|(3A(=B^c)d4::\\n{A}vf2 ((3fgf) e>^c|d2 ((3ded) ^c>A|(D>E F)A d^c|(3e(fe) (3d(^c=B) c>A|\\nf2 ((3fgf) (3e(fg)|a2 ((3aba) g>e|^c>A (3G(AG) (3F(AF)|(3A(=B^c) d4:|\"
-  },
-  {
     name: "Skudrinka",
     abc: "X:1\nT:Skudrinka\nO:Macedonia\nM:2/4\nK:Bbm\nc2B2 B2fe|dcd2 e2A2|c2B2 B2fe|dcd2 e2A2|\\nc2B2 B2fe|dcd2 e2A2|c2B2 B2e2|B4B4:|\n|:fgab agfe|d3A d>ecA|c2B2 BAfe|d3A decA|\nfgab agfe|d3A decA|cBBA e2A2|B4B4:|"
   },
@@ -4582,10 +4570,6 @@ var melnets_part6 = [
   {
     name: "Skylark",
     abc: "X:1\nT:Skylark, The\nC:James Morrison\nR:reel\nD:Noel Hill & Tony Linnane\nD:Paul McGrattan: The Frost Is All Over\nZ:id:hn-reel-252\nM:C|\nK:D\nagfg efdB|AF~F2 DFAd|BG~G2 EGBG|AF~F2 ABdf|\nagfg efdB|AF~F2 DFAd|BG~G2 A2ag|1 faeg fd~d2:|2 faeg fddf||\n|:a2fd Adfd|efed cA~A2|a2fa bged|Beed efge|\n~f3d ~g3e|f2df edBA|F2AF GABG|1 Afag fddf:|2 Afag fdd2||"
-  },
-  {
-    name: "Sk�nkl�t fr�n Haver�",
-    abc: "X:1\nT:Sk�nkl�t fr�n Haver�\nA:Haver�, v. Medelpad\nZ:Lennart Sohlman, �lta, Sweden\nM:4/4\nL:1/8\nQ:1/4=90\nK:G\n(B/c/)|d>c Bc d2d2|d(^c/d/) ef gdBG|g>g fe d>d fe|c(B/c/) ed B3:||\\n(B/c/)|d>d bb a2g2|g(f/g/) b(a/g/) e2 dB|c>c BA e2dB|d>c AF G3g|\\ng(f/g/) bb a2g2|g(f/g/) b(a/g/) e2 dB|c>c BA e2dB|d>c AF G3|]\\nT:Andrast�mma\\n(G/A/)|B>A GA B2B2|B(A/B/) cd B2GD|e>e dc B>B dc|A(G/A/) cB G3:|\\n(G/A/)|B>B gg f2e2|e(d/e/) g(f/e/) c2 B^G|A>A E2 c2BG|B>D DC [B,3D3]B|\\nB(A/B/) gg f2e2|e(d/e/) g(f/e/) c2 B^G|A>A E2 c2BG|B>D DC [B,3D3]|]\\nT:Oktav\n|:(B,/C/)|D>C B,C D2D2|D(^C/D/) EF GDB,G,|G>G FE D>D FE|\\nC(B,/C/) ED B,3:|\\n(B,/C/)|D>D BB A2G2|G(F/G/) B(A/G/) E2 DB,|C>C B,A, E2DB,|D>C A,2 G,3G|\\nG(F/G/) BB A2G2|G(F/G/) B(A/G/) E2 DB,|C>C B,A, E2DB,|D>C A,2 G,3|]\"
   },
   {
     name: "Slandering(?) Bessy. HSJJ.080",
@@ -6910,10 +6894,6 @@ var melnets_part6 = [
   {
     name: "S�kkij�rven polka",
     abc: "X:1\nT:S�kkij�rven polka\nR:Polka\nO:Finland\nM:4/4\nK:Am\naz ze d2c2|c2B2 BE^GB|eeed c2B2 \\n|1 ABcB ABce :|2 ABcB A2z2 :: \\nAB^cd e2a2|a2^gf gab2|e^f^ga b2c'2|b2a2 abc'2|\\nAB^cd e2a2|a2^gf gab2|e^de^f ^gefg|a4 a2:: \\nA^GAB cBc^c|d^cde fedf|eE^GB edcB|cdcB AE^F^G| \\nA^GAB cBc^c|d^cde fedf|eE^GB edcB|A2a2 A2z2:|\\nK:Dm\na2af dAdf|a2af dAdf|a2a2b3a|gbgf e3f|\\ng2gf e2ef|g2gf e2ef|g2^g2 a3=g|fgfe d4|\\na2af d2df|a2af d2df|a2d'2 c'2b2|bc'ba g3a|\\nb4 a2g2|fgfe dA^ce|abag f2e2|d2a2 d2|]"
-  },
-  {
-    name: "S�rna stekl�t",
-    abc: "X:1\nT:S�rna stekl�t\nT:, \nA:S�rna, n. Dalarna\nO:Sweden\nM:2/4\nL:1/8\nK:Dm\nAd fa|ef/g/ a>g|fe/d/ e^c|A4|\\nAd fa|ef/g/ a>g|fe/d/ e^c|[1d4:|[2d3e::\\nf>e fa|e3 ^c|d>^c df|e3 e/g/|fe df/a/|\\nge =ce/g/|fe/d/ e^c|[1d3e:|[2d4|]\\nT:Oktav\nA,D FA|EF/G/ A>G|FE/D/ E^C|A,4|\\nA,D FA|EF/G/ A>G|FE/D/ E^C|[1D4:|[2D3E::\\nF>E FA|E3 ^C|D>^C DF|E3 E/G/|FE DF/A/|\\nGE =CE/G/|FE/D/ E^C|[1D3E:|[2D4|]\"
   },
   {
     name: "S��st�pankki valssi",

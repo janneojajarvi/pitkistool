@@ -388,10 +388,6 @@ var melnets_part2 = [
     abc: "X:1\nT:Cherish The Ladies\nH:Taken down from the playing of Ned Goggin the Glenosheen fiddler.\nB:Joyce, P. W.; \nR:jig\nL:1/8\nM:6/8\nK:D\nDFF AFF|DFA AGF|GEE BEE|GBA GFE|\ndFF AFF|DFA AGF|ABd efg|fdd d3:|\nd3 fed| afd fed |c>de/f/ gfg|ece gfe|\nfga bag|agf edc|1 dcB AGF|GEF GFE:|2 dcB AFA Bdd d3||"
   },
   {
-    name: "Cherkessiya",
-    abc: "X:1\nT:Cherkessiya\nO:Ukraine\nZ:John Chambers <jc@eddie.mit.edu> http://eddie.mit.edu/~jc/music/\nN:The chords in parens may be played during the repeats.\nN:Use the G/C lines for C instruments, the A/D for Bb instruments.\nM:4/4\nL:1/8\nK:G\nP:G\n|: [B2G][B2G] [c2G][B2G] | [AF][A2F][GD] [AF][BG][G2D] :|\\n|: [BG][cA][d2B] [AF][A2F][GD] | [AF][BG][c2A] [BG][AF][G2D] :| \\nP:C\nK:C\n|: [e2c][e2c] [f2c][e2c] | [dB][d2B][cG] [dB][ec][c2G] :|\\n|: [ec][fd][g2e] [dB][d2B][cG] | [dB][ec][f2d] [ec][dB][c2G] :| \\nP:A\nK:A\n|: [c2A][c2A] [d2A][c2A] | [BG][B2G][AE] [BG][cA][A2E] :|\\n|: [cA][dB][e2c] [BG][B2G][AE] | [BG][cA][d2B] [cA][BG][A2E] :| \\nP:D\nK:D\n|: [f2d][f2d] [g2d][f2d] | [ec][e2c][dA] [ec][fd][d2A] :|\\n|: [fd][ge][a2f] [ec][e2c][dA] | [ec][fd][g2e] [fd][ec][d2A] :| \"
-  },
-  {
     name: "Cherokee Shuffle",
     abc: "X:1\nT:Cherokee Shuffle\nS:via PR\nM:4/4\nL:1/4\nK:A\nF/2G/2|AA/2B/2 AA/2B/2|c/2B/2A FE/2F/2|AA/2B/2 c/2d/2e|\\nf/2e/2f/2g/2 ff/2g/2|\naa/2b/2 aa/2f/2|e/2f/2e/2d/2 c/2B/2A|F/2G/2A/2c/2 B/2A/2G|A3\\n:|\n|:e|f/2e/2f/2g/2 a/2e/2f/2e/2|c/2d/2e/2f/2 ee|f/2e/2f/2g/2 a/2e/2f|\ne3e|f/2e/2f/2g/2 a/2e/2f/2e/2|c/2d/2e/2f/2 ee|\\nf/2e/2c/2B/2 A/2B/2c/2e/2|\nff/2g/2 ff/2g/2|a/2e/2g/2f/2 e/2d/2c/2B/2|AA/2B/2 A:|"
   },
@@ -1110,10 +1106,6 @@ var melnets_part2 = [
   {
     name: "Cleveland Park",
     abc: "X:1\nT:Cleveland Park\nC:Trad\nR:Jig\nZ:e.g. Wolfstone and Karen Tweed/Iain Carr do this.\nM:6/8\nK:Em\nL:1/8\n| B,EF GFE| CEF GFE |^CEF GFE| FAF DFA|\n| B,EF GFE| CEF GFE | FAF DFA|1 AGF EDC :|2 AGF E2 B,|\n|: EGB eBG| ABc BGE | CEG B,EG| GFE ^DEF|\n|1 EGB eBG| ABc BGE | CEG B,EG| FE^D E2 B, :|\n|2 B,EF GFE| CEF GFE | FAF DFA| AGF E3||"
-  },
-  {
-    name: "Click Go The Shears",
-    abc: "X:1\nT:Click Go The Shears\nF:http://back.numachi.com:8000/dtrad/abc/CLKSHEAR.abc	 2009-11-15 19:11:11 UT\nM:6/8\nQ:1/4=140\nL:1/4\nK:D\nF3/2 F E/2| D3/2 A3/2| d3/2 d c/2| B3| A3/2 A B/2| A3/2 G F/2| F3/2 E F/2|\\nE3| F- G/2 F E/2| D3/2 F A/2| d3/2 d c/2| B3/2- B d/2| e d/2 c B/2|\\nA G/2 F E/2| D d/2 d d/2| d3| e3/2 e d/2| c3/2 A3/2| d3/2 f3/2| d3|\\nB3/2 B c/2| d3/2 c B/2| A3/2 d- F/2| E2- E/2E/2| F G/2 F E/2| D3/2 F A/2|\\nd d/2 d c/2| B3/2- B d/2| e d/2 c B/2| A G/2 F E/2| D3/2 d d/2| d3|\"
   },
   {
     name: "Click Goes The Shears",
@@ -2510,10 +2502,6 @@ var melnets_part2 = [
   {
     name: "Crooked Road",
     abc: "X:1\nT:Crooked Road, The\nT:Crooked Road to Dublin, The\nM:C|\nL:1/8\nR:reel\nK:G\nG2~G2 FGAF|G2FG AdcA|G2AG FGAg|1 fdcA dBcA:|2 fdcA d2Bc||\ndg~g2 fgaf|dg~g2 agfe|dg~g2 fgag|fdcA d2Bc|\ndg~g2 fgaf|dg~g2 a2ga|bgaf gbag|fdcA dBcA||"
-  },
-  {
-    name: "Crooked Road",
-    abc: "X:1\nT:Crooked Road\nM:4/4\nL:1/8\nR:reel\nZ:From Josephine Marsh at Kilfenora 1996\nK:G\n~G2 AG FGAF|~G2 FG AdcA|~G2 AG FGAd|fdcA ~d2 cA|\\n~G2 AG FGAF|~G2 FG AdcA|~G2 AG FGAd|fdcA ~d2 Bc||\\nd~g3 fgaf|d~g3 agfe|d~g3 fgag|fdcA ~d2 Bc|\\nd~g3 fgaf|d~g3 ~a2 ga|bgaf g ~a3|fdcA ~d2 cA||\"
   },
   {
     name: "Crooked Stove Pipe",
